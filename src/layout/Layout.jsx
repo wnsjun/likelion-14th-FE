@@ -18,9 +18,9 @@ const Layout = () => {
       description:
         '2024년 멋쟁이사자처럼 14기에서 진행할\n1년 로드맵을 소개합니다',
     },
-    '/archaive': {
+    '/archive': {
       subtitle: '지난 활동',
-      title: 'Archaive',
+      title: 'Archive',
       description:
         '2025년 멋쟁이 사자처럼 13기에서 진행한\n프로젝트와 활동을 소개합니다.',
     },
@@ -35,7 +35,7 @@ const Layout = () => {
   const currentHeader = headerConfig[location.pathname];
 
   return (
-    <div className="w-full min-h-screen bg-bg-dark ">
+    <div className="w-full min-h-screen bg-bg-dark overflow-x-hidden">
       {/* 1. 네브바 고정 영역 */}
       <div className="fixed top-0 left-0 w-full z-50 bg-bg-dark">
         <Navbar />

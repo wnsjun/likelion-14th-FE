@@ -3,7 +3,7 @@ import Layout from './layout/Layout';
 import ColorTest from './components/common/ColorTest';
 import Home from './pages/Home';
 import Events from "./pages/Events";
-import Archaive from "./pages/Archaive";
+import Archive from "./pages/Archive";
 import Recruiting from "./pages/Recruiting";
 import ApplyEnd from "./pages/ApplyEnd";
 import ApplyCheckPage from "./pages/applycheck/ApplyCheckPage";
@@ -20,7 +20,7 @@ function App() {
         <Route element={<Layout />}>
           <Route path="/color-test" element={<ColorTest />} />
           <Route path="/events" element={<Events />} />
-          <Route path="/archaive" element={<Archaive />} />
+          <Route path="/archive" element={<Archive />} />
           <Route path="/recruiting" element={<Recruiting />} />
           <Route path="/apply-end" element={<ApplyEnd />} />
           <Route path="/faq" element={<FAQ />} />
