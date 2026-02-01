@@ -81,7 +81,7 @@ const Archive = () => {
             <div className="flex justify-center w-full">
                 <div className="w-full max-w-[1120px] flex flex-col">
                     {/* 필터바 */}
-                    <div className="flex justify-start items-center gap-[10px] mb-8">
+                    <div className="flex justify-start items-center gap-1 md:gap-[10px] mb-8 flex-wrap">
                         {filters.map((filter) => (
                             <button
                                 key={filter}
@@ -89,8 +89,8 @@ const Archive = () => {
                                 className={`
                                     cursor-pointer
                                     flex justify-center items-center
-                                    px-4 py-3
-                                    body-18-regular
+                                    px-2 py-2 md:px-4 md:py-3
+                                    text-base md:body-18-regular
                                     transition-all
                                     ${selectedFilter === filter
                                         ? 'text-white rounded-[8px] border-b border-[#DABE5A]'

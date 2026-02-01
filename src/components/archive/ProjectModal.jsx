@@ -100,138 +100,115 @@ const ProjectModal = ({ isOpen, onClose, project }) => {
 
     return (
         <div
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/85"
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/85 p-4"
             onClick={onClose}
         >
             {/* 모달 컨테이너 */}
             <div
-                className="relative"
-                style={{
-                    width: '657px',
-                    height: '571px',
-                    borderRadius: '11px',
-                    border: '1px solid #515154',
-                    background: '#2D2D2D',
-                }}
+                className="relative w-full max-w-[657px] rounded-[11px] border border-[#515154] bg-[#2D2D2D] overflow-hidden"
                 onClick={(e) => e.stopPropagation()}
             >
-                {/* 닫기 버튼 */}
-                <button
-                    onClick={onClose}
-                    className="absolute top-4 right-4 text-white text-2xl hover:text-gray-300 transition-colors cursor-pointer"
-                >
-                    ✕
-                </button>
-
-                {/* 카테고리 */}
-                <p
-                    className="absolute body-14-regular text-gray-02"
-                    style={{ top: '27px', left: '53px' }}
-                >
-                    {project.category}
-                </p>
-
-                {/* 서비스 이름 */}
-                <h2
-                    className="absolute title-32-semibold text-white"
-                    style={{ top: '54px', left: '53px' }}
-                >
-                    {project.title}
-                </h2>
-
-                {/* 서비스 설명 */}
-                <p
-                    className="absolute body-16-regular text-gray-02"
-                    style={{ top: '96px', left: '53px', maxWidth: '551px' }}
-                >
-                    {project.subtitle}
-                </p>
-
-                {/* 팀원 정보 */}
-                <div className="absolute" style={{ top: '153px', left: '400px' }}>
-                    {/* 기획/디자인 */}
-                    <div className="flex items-center">
-                        <span className="body-14-semibold text-gray-04" style={{ width: '85px' }}>기획/디자인</span>
-                        <span className="body-14-regular text-gray-02 ml-[20px]">
-                            {project.designer || '이름'}
-                        </span>
-                    </div>
-
-                    {/* 프론트엔드 */}
-                    <div className="flex items-center mt-[15px]">
-                        <span className="body-14-semibold text-gray-04" style={{ width: '85px' }}>프론트엔드</span>
-                        <span className="body-14-regular text-gray-02 ml-[20px]">
-                            {project.frontend || '이름'}
-                        </span>
-                    </div>
-
-                    {/* 백엔드 */}
-                    <div className="flex items-center mt-[15px]">
-                        <span className="body-14-semibold text-gray-04" style={{ width: '85px' }}>백엔드</span>
-                        <span className="body-14-regular text-gray-02 ml-[20px]">
-                            {project.backend || '이름'}
-                        </span>
-                    </div>
-                </div>
-
-                {/* 슬라이더 바 */}
-                <div
-                    className="absolute mt-[10px]"
-                    style={{
-                        top: '253px',
-                        left: '62px',
-                        width: '533px',
-                    }}
-                >
-                    <div
-                        ref={sliderRef}
-                        className="relative h-0.5 bg-[#515154] rounded-full cursor-pointer"
-                        onMouseDown={handleMouseDown}
-                        onTouchStart={handleTouchStart}
-                        onTouchMove={handleTouchMove}
-                        onTouchEnd={handleTouchEnd}
+                {/* 상단 컨텐츠 영역 */}
+                <div className="p-6 md:p-8 pb-4">
+                    {/* 닫기 버튼 */}
+                    <button
+                        onClick={onClose}
+                        className="absolute top-4 right-4 text-white text-2xl hover:text-gray-300 transition-colors cursor-pointer z-10"
                     >
-                        {/* 채워진 부분 */}
-                        <div
-                            className="absolute top-0 left-0 h-full bg-white rounded-full transition-all duration-75"
-                            style={{ width: `${Math.min(handlePosition, 100)}%` }}
-                        />
+                        ✕
+                    </button>
 
-                        {/* 손잡이 */}
-                        <img
-                            src={handleIcon}
-                            alt="slider handle"
-                            className={`absolute top-1/2 -translate-y-1/2 transition-transform duration-75 ${
-                                isDragging ? 'scale-125' : 'hover:scale-110'
-                            }`}
-                            style={{ left: `calc(${Math.min(handlePosition, 100)}% - 10px)`, width: '20px', height: '20px' }}
-                            draggable={false}
-                        />
+                    {/* 카테고리 */}
+                    <p className="body-14-regular text-gray-02">
+                        {project.category}
+                    </p>
+
+                    {/* 서비스 이름 */}
+                    <h2 className="title-32-semibold text-white mt-2">
+                        {project.title}
+                    </h2>
+
+                    {/* 서비스 설명 */}
+                    <p className="body-16-regular text-gray-02 mt-3 max-w-[90%]">
+                        {project.subtitle}
+                    </p>
+
+                    {/* 팀원 정보 */}
+                    <div className="mt-6 md:mt-8 ml-0 md:ml-[370px] flex flex-col gap-3">
+                        {/* 기획/디자인 */}
+                        <div className="flex items-center">
+                            <span className="body-14-semibold text-gray-04 w-[85px]">기획/디자인</span>
+                            <span className="body-14-regular text-gray-02 ml-5">
+                                {project.designer || '이름'}
+                            </span>
+                        </div>
+
+                        {/* 프론트엔드 */}
+                        <div className="flex items-center">
+                            <span className="body-14-semibold text-gray-04 w-[85px]">프론트엔드</span>
+                            <span className="body-14-regular text-gray-02 ml-5">
+                                {project.frontend || '이름'}
+                            </span>
+                        </div>
+
+                        {/* 백엔드 */}
+                        <div className="flex items-center">
+                            <span className="body-14-semibold text-gray-04 w-[85px]">백엔드</span>
+                            <span className="body-14-regular text-gray-02 ml-5">
+                                {project.backend || '이름'}
+                            </span>
+                        </div>
+                    </div>
+
+                    {/* 슬라이더 바 */}
+                    <div className="mt-6 w-full">
+                        <div
+                            ref={sliderRef}
+                            className="relative h-0.5 bg-[#515154] rounded-full cursor-pointer"
+                            onMouseDown={handleMouseDown}
+                            onTouchStart={handleTouchStart}
+                            onTouchMove={handleTouchMove}
+                            onTouchEnd={handleTouchEnd}
+                        >
+                            {/* 채워진 부분 */}
+                            <div
+                                className="absolute top-0 left-0 h-full bg-white rounded-full transition-all duration-75"
+                                style={{ width: `${Math.min(handlePosition, 100)}%` }}
+                            />
+
+                            {/* 손잡이 */}
+                            <img
+                                src={handleIcon}
+                                alt="slider handle"
+                                className={`absolute top-1/2 -translate-y-1/2 transition-transform duration-75 ${
+                                    isDragging ? 'scale-125' : 'hover:scale-110'
+                                }`}
+                                style={{ left: `calc(${Math.min(handlePosition, 100)}% - 10px)`, width: '20px', height: '20px' }}
+                                draggable={false}
+                            />
+                        </div>
                     </div>
                 </div>
 
                 {/* 이미지 갤러리 */}
                 <div
                     ref={imagesContainerRef}
-                    className="absolute overflow-x-auto"
+                    className="w-full overflow-x-auto"
                     style={{
-                        top: '279px',
-                        left: '0',
-                        width: '657px',
-                        height: '267px',
+                        height: 'clamp(150px, 40vw, 267px)',
                         scrollbarWidth: 'none',
                         msOverflowStyle: 'none',
                     }}
                     onScroll={handleScroll}
                 >
-                    <div className="flex gap-[1px]" style={{ width: 'max-content' }}>
+                    <div className="flex gap-[1px] h-full" style={{ width: 'max-content' }}>
                         {images.map((src, index) => (
                             <img
                                 key={index}
                                 src={src}
                                 alt={`${project.title} - ${index + 1}`}
-                                className="flex-shrink-0 object-cover"
-                                style={{ width: `${IMAGE_WIDTH}px`, height: `${IMAGE_HEIGHT}px` }}
+                                className="flex-shrink-0 object-cover h-full"
+                                style={{ aspectRatio: '467/267' }}
                                 draggable={false}
                             />
                         ))}

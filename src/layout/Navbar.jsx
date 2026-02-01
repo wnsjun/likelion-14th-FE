@@ -78,7 +78,7 @@ const Navbar = () => {
       >
         <div className="flex flex-col items-center justify-center h-full space-y-2">
           <NavItem label="모집 안내" path="/recruiting" mobile />
-          <NavItem label="지난 활동" path="/archaive" mobile />
+          <NavItem label="지난 활동" path="/archive" mobile />
           <NavItem label="행사 일정" path="/events" mobile />
           <NavItem label="FAQ" path="/faq" mobile />
           <div className="pt-10">
