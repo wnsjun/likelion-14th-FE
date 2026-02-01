@@ -98,7 +98,7 @@ const Manager = () => {
           {parts.map((part) => (
             <div key={part} className="flex flex-col gap-[24px]">
               {/* 파트 이름 표기 */}
-              <div className="body-16-semibold lg:bg-gray-02 sm:bg-transparent sm:border-[1.5px] sm:border-gray-02 sm:text-gray-02 rounded-full w-fit lg:text-gray-07 px-[20px] py-[8px]">
+              <div className="body-16-semibold lg:bg-gray-02 bg-transparent border-[1.5px] border-gray-02 text-gray-02 rounded-full w-fit lg:text-gray-07 px-[20px] py-[8px]">
                 {part}
               </div>
 
