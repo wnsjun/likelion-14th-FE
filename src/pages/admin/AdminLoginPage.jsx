@@ -1,28 +1,35 @@
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 import LoginForm from '../../components/admin/LoginForm';
+import { loginAdmin } from '../../apis/admin/Admin';
 
 const AdminLoginPage = () => {
+  const [id, setId] = useState('');
+  const [pw, setPw] = useState('');
   const navigate = useNavigate();
 
-  const handleLogin = (id, pw) => {
-    // 🔐 임시 로그인 로직
-    const ADMIN_ID = 'admin';
-    const ADMIN_PW = '1234';
+  const handleLogin = async () => {
+    
+    // 유효성 검사
+    if (!id || !pw) {
+      alert("아이디와 비밀번호를 입력해주세요.");
+      return;
+    }
 
-    if (id === ADMIN_ID && pw === ADMIN_PW) {
-      // ✅ 로그인 성공 시 토큰 저장 (이게 "출입증" 역할)
-      localStorage.setItem('adminToken', 'secret-token-1234');
-      
-      alert(`환영합니다, 운영진님! 🦁`);
-      navigate('/admin/dashboard'); 
-    } else {
-      alert('아이디 또는 비밀번호가 일치하지 않습니다.');
+    try {
+      const response = await loginAdmin(id, pw);
+      if (response.status === 200) {
+        alert("운영진 로그인 성공!");
+        navigate('/admin/dashboard');
+      }
+    } catch (error) {
+      alert("로그인 실패! 아이디나 비밀번호를 다시 확인해주세요.");
     }
   };
 
   return (
     <div className="w-full min-h-screen flex items-center justify-center bg-bg-dark">
-      <LoginForm onLogin={handleLogin} />
+      <LoginForm id={id} setId={setId} pw={pw} setPw={setPw} handleLogin={handleLogin} />
     </div>
   );
 };

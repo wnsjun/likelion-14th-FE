@@ -1,12 +1,10 @@
 import { useState } from 'react';
 
-const LoginForm = ({ onLogin }) => {
-  const [id, setId] = useState('');
-  const [pw, setPw] = useState('');
+const LoginForm = ({ id, setId, pw, setPw, handleLogin }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault(); // 폼 제출 시 새로고침 방지
-    onLogin(id, pw);
+    handleLogin();
   };
 
   return (
@@ -28,7 +26,7 @@ const LoginForm = ({ onLogin }) => {
           <label className="detail-12-regular text-gray-04 ml-1">ID</label>
           <input 
             type="text" 
-            value={id}
+            value={id || ''}
             onChange={(e) => setId(e.target.value)}
             placeholder="아이디를 입력하세요"
             className="w-full h-[54px] p-[16px] rounded-[8px] bg-gray-01 text-black placeholder:text-gray-04 outline-none focus:ring-2 focus:ring-orange-04 transition-all"
@@ -40,7 +38,7 @@ const LoginForm = ({ onLogin }) => {
           <label className="detail-12-regular text-gray-04 ml-1">Password</label>
           <input 
             type="password" 
-            value={pw}
+            value={pw || ''}
             onChange={(e) => setPw(e.target.value)}
             placeholder="비밀번호를 입력하세요"
             className="w-full h-[54px] p-[16px] rounded-[8px] bg-gray-01 text-black placeholder:text-gray-04 outline-none focus:ring-2 focus:ring-orange-04 transition-all"
