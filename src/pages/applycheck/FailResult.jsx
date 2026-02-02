@@ -1,8 +1,10 @@
 import { useNavigate } from 'react-router-dom';
 
-const FailResult = ({ name }) => {
+const FailResult = ({ name, type }) => {
   const navigate = useNavigate();
   const firstName = name.length >= 3 ? name.slice(1) : name;
+
+  const titleText = type === 'doc' ? '1차 서류 전형 불합격입니다' : '최종 불합격입니다';
 
   return (
     <div className="w-full flex flex-col items-start px-8">
@@ -20,7 +22,7 @@ const FailResult = ({ name }) => {
           </span>
         </div>
         <h1 className="title-32-semibold text-white">
-          1차 서류 전형 불합격입니다
+          {titleText}
         </h1>
       </div>
 
