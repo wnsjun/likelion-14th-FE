@@ -19,6 +19,7 @@ const AdminLoginPage = () => {
     try {
       const response = await loginAdmin(id, pw);
       if (response.status === 200) {
+        localStorage.setItem('adminToken', 'true');
         alert("운영진 로그인 성공!");
         navigate('/admin/dashboard');
       }

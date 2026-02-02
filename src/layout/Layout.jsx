@@ -16,7 +16,7 @@ const Layout = () => {
       subtitle: '행사 일정',
       title: 'Program',
       description:
-        '2024년 멋쟁이사자처럼 14기에서 진행할\n1년 로드맵을 소개합니다',
+        '2026년 멋쟁이사자처럼 14기에서 진행할\n1년 로드맵을 소개합니다',
     },
     '/archive': {
       subtitle: '지난 활동',
