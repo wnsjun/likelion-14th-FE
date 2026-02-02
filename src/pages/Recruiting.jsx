@@ -38,7 +38,6 @@ const Recruiting = () => {
           <EventCard
             title="최종 발표"
             date="3월 7일"
-            description="*특이사항 추가"
           />
         </div>
       </div>
@@ -59,10 +58,10 @@ const Recruiting = () => {
         <div className="grid grid-cols-2 min-[600px]:grid-cols-3 min-[1440px]:grid-cols-6 gap-[20px]">
           <EventCard title="OT" date="3월 10일" />
           <EventCard title="MT" date="3월 13일 - 14일" />
-          <EventCard title="아이디어톤" isDisabled={false} date="추후 공지" />
-          <EventCard title="애거돈" isDisabled={false} date="추후 공지" />
-          <EventCard title="해커톤" isDisabled={false} date="추후 공지" />
-          <EventCard title="데모데이" isDisabled={false} date="추후 공지" />
+          <EventCard title="아이디어톤" isDisabled={false} date="5월" />
+          <EventCard title="애거돈" isDisabled={false} date="7월" />
+          <EventCard title="해커톤" isDisabled={false} date="8월" />
+          <EventCard title="데모데이" isDisabled={false} date="11월" />
         </div>
       </div>
 
