@@ -72,4 +72,4 @@ const FinalPassResult = ({ name }) => {
   );
 };
 
-export default FinalPassResult;
+export default FinalPassResult; 

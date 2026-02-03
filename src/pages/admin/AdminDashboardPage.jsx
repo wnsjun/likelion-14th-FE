@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import DashboardHeader from '../../components/admin/DashboardHeader';
 import TabFilter from '../../components/admin/TabFilter';
 import ApplicantList from '../../components/admin/ApplicantList';
@@ -12,55 +13,23 @@ const INITIAL_DATA = [
 ];
 
 const AdminDashboardPage = () => {
+  const navigate = useNavigate();
   const [currentTab, setCurrentTab] = useState('all');
   const [applicants, setApplicants] = useState(INITIAL_DATA);
   
-  // 필터 상태
-  const [filters, setFilters] = useState({
-    doc: false, 
-    final: false, 
+  // 서류 합격 토글 함수
+  const handleDocToggle = (id) => {
+    setApplicants(prev => prev.map(app => 
+      app.id === id ? { ...app, isDocPass: !app.isDocPass } : app
+    ));
+  };
+
+  // 탭 필터링
+  const filteredApplicants = applicants.filter(item => {
+    if (currentTab === 'all') return true;
+    if (currentTab === 'plan_design') return item.part === 'PM' || item.part === 'Design';
+    return item.part.toLowerCase() === currentTab;
   });
-
-  // 개별 토글
-  const handleToggle = (id, type) => {
-    setApplicants(prev => prev.map(app => {
-      if (app.id === id) {
-        if (type === 'doc') return { ...app, isDocPass: !app.isDocPass };
-        if (type === 'final') return { ...app, isFinalPass: !app.isFinalPass };
-      }
-      return app;
-    }));
-  };
-
-  // 필터 토글
-  const toggleFilter = (type) => {
-    setFilters(prev => ({
-      ...prev,
-      [type]: !prev[type] 
-    }));
-  };
-
-  // 필터링 로직
-  const getFilteredData = () => {
-    let data = applicants;
-
-    // 탭 필터
-    if (currentTab === 'plan_design') {
-      data = data.filter(item => item.part === 'PM' || item.part === 'Design');
-    } else if (currentTab === 'frontend') {
-      data = data.filter(item => item.part === 'Frontend');
-    } else if (currentTab === 'backend') {
-      data = data.filter(item => item.part === 'Backend');
-    }
-
-    // 체크박스 필터
-    if (filters.doc) data = data.filter(item => item.isDocPass);
-    if (filters.final) data = data.filter(item => item.isFinalPass);
-
-    return data;
-  };
-
-  const filteredApplicants = getFilteredData();
 
   return (
     <div className="w-full min-h-screen bg-bg-dark">
@@ -71,23 +40,30 @@ const AdminDashboardPage = () => {
           <div>
             <h2 className="title-32-bold text-white mb-2">지원자 관리</h2>
             <p className="body-16-regular text-gray-04">
-              총 <span className="text-orange-04 font-bold">{filteredApplicants.length}</span>명의 지원자가 있습니다.
+              전체 지원자 <span className="text-orange-04 font-bold">{filteredApplicants.length}</span>명
             </p>
           </div>
+
+          {/* 버튼 클릭 시 새 페이지로 이동 */}
+          <button 
+            onClick={() => navigate('/admin/final')}
+            className="px-6 py-3 rounded-full title-16-bold bg-orange-01 text-white hover:bg-orange-01-hover transition-all"
+          >
+            서류 합격자 관리로 이동 &gt;
+          </button>
         </div>
 
         <TabFilter currentTab={currentTab} onTabChange={setCurrentTab} />
 
+        {/* type="doc"을 전달해서 서류 체크박스만 나오게 함 */}
         <ApplicantList 
           applicants={filteredApplicants} 
-          onToggle={handleToggle} 
-          filters={filters}         
-          onFilterToggle={toggleFilter} 
+          onToggle={handleDocToggle} 
+          type="doc" 
         />
         
       </main>
     </div>
   );
 };
-
 export default AdminDashboardPage;

@@ -1,4 +1,9 @@
-const ApplicantItem = ({ applicant, onToggle }) => {
+import { useState } from 'react';
+import EditIcon from '../../assets/icon/edit.svg';
+
+const ApplicantItem = ({ applicant, onToggle, onUpdate, type }) => {
+  const [isEditing, setIsEditing] = useState(false);
+
   const formatPart = (part) => {
     switch(part) {
       case 'PM':
@@ -26,51 +31,108 @@ const ApplicantItem = ({ applicant, onToggle }) => {
     </div>
   );
 
+  const handleEditClick = () => {
+    setIsEditing(!isEditing);
+  };
+
+  const inputBaseStyle = "w-full h-[36px] rounded-[4px] px-2 text-center text-sm outline-none transition-all";
+  const activeInputStyle = "bg-gray-01 text-black focus:ring-1 focus:ring-orange-04";
+  const disabledInputStyle = "bg-transparent text-gray-03 cursor-default";
+
   return (
     <div className="w-full h-[60px] bg-bg-secondary rounded-[8px] border border-gray-07 mb-2 px-6 flex items-center hover:border-orange-04 transition-all">
-      <div className="w-[10%] min-w-[60px] text-gray-03 body-14-medium">
+      
+      {/* 1. 파트 (8%) */}
+      <div className="w-[8%] text-gray-03 body-14-medium text-left truncate">
         {formatPart(applicant.part)}
       </div>
 
-      <div className="w-[15%] min-w-[80px] text-white body-16-semibold">
+      {/* 2. 이름 (10%) */}
+      <div className="w-[10%] text-white body-16-semibold text-center truncate">
         {applicant.name}
       </div>
 
-      <div className="w-[15%] min-w-[100px] text-gray-04 body-14-regular">
+      {/* 3. 학번 (12%) */}
+      <div className="w-[12%] text-gray-04 body-14-regular text-center truncate">
         {applicant.studentId}
       </div>
 
-      <div className="w-[20%] min-w-[140px] text-gray-04 body-14-regular">
+      {/* 4. 전화번호 (15%) */}
+      <div className="w-[15%] text-gray-04 body-14-regular text-center truncate">
         {applicant.phone}
       </div>
 
-      <div className="w-[15%] min-w-[80px]">
-        {applicant.docLink ? (
-          <a 
-            href={applicant.docLink} 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            className="detail-12-medium text-gray-04 underline hover:text-orange-04"
-          >
-            보기
-          </a>
+      {/* 5. ⭐ 면접 정보 영역 (45%) - Flex gap으로 여백 확보 */}
+      <div className="w-[45%] flex items-center justify-center gap-2 px-2 relative">
+        {type === 'final' ? (
+          <>
+            {/* 장소 */}
+            <input 
+              type="text"
+              placeholder="장소"
+              value={applicant.location || ''}
+              disabled={!isEditing} 
+              onChange={(e) => onUpdate(applicant.id, 'location', e.target.value)}
+              className={`flex-1 ${inputBaseStyle} ${isEditing ? activeInputStyle : disabledInputStyle}`}
+            />
+
+            {/* 날짜 */}
+            <input 
+              type="text"
+              placeholder="날짜"
+              value={applicant.date || ''}
+              disabled={!isEditing}
+              onChange={(e) => onUpdate(applicant.id, 'date', e.target.value)}
+              className={`flex-1 ${inputBaseStyle} ${isEditing ? activeInputStyle : disabledInputStyle}`}
+            />
+
+            {/* 시간 */}
+            <input 
+              type="text"
+              placeholder="시간"
+              value={applicant.time || ''}
+              disabled={!isEditing}
+              onChange={(e) => onUpdate(applicant.id, 'time', e.target.value)}
+              className={`flex-1 ${inputBaseStyle} ${isEditing ? activeInputStyle : disabledInputStyle}`}
+            />
+            
+            {/* ⭐ 수정 버튼 (Flex 흐름 안에 배치하거나 우측 끝에 고정) */}
+            <div className="w-[40px] flex justify-center flex-shrink-0">
+               <button 
+                onClick={handleEditClick}
+                className="flex items-center justify-center"
+              >
+                {isEditing ? (
+                  <span className="detail-12-medium text-orange-04 hover:text-orange-04-hover cursor-pointer whitespace-nowrap">
+                    적용
+                  </span>
+                ) : (
+                  <div className="w-5 h-5 cursor-pointer opacity-70 hover:opacity-100">
+                    <img src={EditIcon} alt="Edit" />
+                  </div>
+                )}
+              </button>
+            </div>
+          </>
         ) : (
-          <span className="detail-12-medium text-gray-06">없음</span>
+          /* 서류 관리 페이지에서는 비워둠 */
+          <div className="w-full h-[36px]"></div>
         )}
       </div>
 
-      <div className="w-[12%] flex justify-center">
-        <CheckBox 
-          checked={applicant.isDocPass} 
-          onClick={() => onToggle(applicant.id, 'doc')}
-        />
-      </div>
-
-      <div className="w-[13%] flex justify-center">
-        <CheckBox 
-          checked={applicant.isFinalPass} 
-          onClick={() => onToggle(applicant.id, 'final')}
-        />
+      {/* 6. 체크박스 (10%) */}
+      <div className="w-[10%] flex justify-center">
+        {type === 'doc' ? (
+          <CheckBox 
+            checked={applicant.isDocPass} 
+            onClick={() => onToggle(applicant.id, 'doc')}
+          />
+        ) : (
+          <CheckBox 
+            checked={applicant.isFinalPass} 
+            onClick={() => onToggle(applicant.id, 'final')}
+          />
+        )}
       </div>
     </div>
   );

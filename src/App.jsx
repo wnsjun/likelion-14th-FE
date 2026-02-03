@@ -11,6 +11,7 @@ import FAQ from "./pages/FAQ";
 import AdminLoginPage from './pages/admin/AdminLoginPage';
 import AdminDashboardPage from './pages/admin/AdminDashboardPage';
 import PrivateRoute from './components/admin/PrivateRoute';
+import AdminFinalPage from './pages/admin/AdminFinalPage';
 
 function App() {
   return (
@@ -39,6 +40,9 @@ function App() {
               </PrivateRoute>
             } 
           />
+          <Route path="final" element={
+              <PrivateRoute><AdminFinalPage /></PrivateRoute>
+          } />
         </Route>
       </Routes>
     </Router>
