@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import EditIcon from '../../assets/icon/edit.svg';
 
-const ApplicantItem = ({ applicant, onToggle, onUpdate, type }) => {
+const ApplicantItem = ({ applicant, onToggle, onUpdate, onSave, type }) => {
   const [isEditing, setIsEditing] = useState(false);
 
   const formatPart = (part) => {
@@ -32,6 +32,13 @@ const ApplicantItem = ({ applicant, onToggle, onUpdate, type }) => {
   );
 
   const handleEditClick = () => {
+    if (isEditing && onSave) {
+      onSave(applicant.id, {
+        location: applicant.location,
+        date: applicant.date,
+        time: applicant.time
+      });
+    }
     setIsEditing(!isEditing);
   };
 
@@ -62,8 +69,8 @@ const ApplicantItem = ({ applicant, onToggle, onUpdate, type }) => {
         {applicant.phone}
       </div>
 
-      {/* 5. ⭐ 면접 정보 영역 (45%) - Flex gap으로 여백 확보 */}
-      <div className="w-[45%] flex items-center justify-center gap-2 px-2 relative">
+      {/* 5. 면접 정보 영역 (45%) - Flex gap으로 여백 확보 */}
+      <div className="w-[45%] flex items-center justify-center gap-2 px-2 relative z-20">
         {type === 'final' ? (
           <>
             {/* 장소 */}
@@ -96,19 +103,19 @@ const ApplicantItem = ({ applicant, onToggle, onUpdate, type }) => {
               className={`flex-1 ${inputBaseStyle} ${isEditing ? activeInputStyle : disabledInputStyle}`}
             />
             
-            {/* ⭐ 수정 버튼 (Flex 흐름 안에 배치하거나 우측 끝에 고정) */}
-            <div className="w-[40px] flex justify-center flex-shrink-0">
-               <button 
+            {/* 수정 버튼 (Flex 흐름 안에 배치하거나 우측 끝에 고정) */}
+            <div className="w-[40px] flex justify-center flex-shrink-0 ml-1">
+              <button 
                 onClick={handleEditClick}
-                className="flex items-center justify-center"
+                className="flex items-center justify-center w-8 h-8 cursor-pointer"
               >
                 {isEditing ? (
-                  <span className="detail-12-medium text-orange-04 hover:text-orange-04-hover cursor-pointer whitespace-nowrap">
+                  <span className="detail-12-medium text-orange-04 hover:text-orange-04-hover whitespace-nowrap">
                     적용
                   </span>
                 ) : (
-                  <div className="w-5 h-5 cursor-pointer opacity-70 hover:opacity-100">
-                    <img src={EditIcon} alt="Edit" />
+                  <div className="w-5 h-5 opacity-70 hover:opacity-100">
+                    <img src={EditIcon} alt="Edit" className="w-full h-full" />
                   </div>
                 )}
               </button>

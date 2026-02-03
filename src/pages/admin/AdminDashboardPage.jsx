@@ -1,30 +1,85 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { getApplicants, updateDocumentPass } from '../../apis/admin/Admin'; // API import
 import DashboardHeader from '../../components/admin/DashboardHeader';
 import TabFilter from '../../components/admin/TabFilter';
 import ApplicantList from '../../components/admin/ApplicantList';
 
-const INITIAL_DATA = [
-  { id: 1, name: '김멋사', studentId: 'B912345', part: 'Frontend', phone: '010-1234-5678', docLink: 'https://google.com', isDocPass: true, isFinalPass: false },
-  { id: 2, name: '이디자', studentId: 'C112345', part: 'Design', phone: '010-1111-2222', docLink: 'https://google.com', isDocPass: false, isFinalPass: false },
-  { id: 3, name: '박백엔', studentId: 'B812345', part: 'Backend', phone: '010-3333-4444', docLink: '', isDocPass: true, isFinalPass: true },
-  { id: 4, name: '최기획', studentId: 'C212345', part: 'PM', phone: '010-5555-6666', docLink: 'https://google.com', isDocPass: false, isFinalPass: false },
-  { id: 5, name: '정프론', studentId: 'B712345', part: 'Frontend', phone: '010-7777-8888', docLink: 'https://google.com', isDocPass: true, isFinalPass: false },
-];
-
 const AdminDashboardPage = () => {
   const navigate = useNavigate();
   const [currentTab, setCurrentTab] = useState('all');
-  const [applicants, setApplicants] = useState(INITIAL_DATA);
-  
-  // 서류 합격 토글 함수
-  const handleDocToggle = (id) => {
-    setApplicants(prev => prev.map(app => 
-      app.id === id ? { ...app, isDocPass: !app.isDocPass } : app
-    ));
+  const [applicants, setApplicants] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  // 🔄 데이터 불러오기
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        // 파라미터 없이 호출하면 전체 조회
+        const data = await getApplicants(); 
+        
+        // 🛠️ 서버 데이터를 UI 데이터 구조로 변환 (매핑)
+        const formattedData = data.map(item => ({
+          id: item.studentId,         // DB ID (0)
+          studentId: item.studentNum, // 학번 (B912345)
+          name: item.name,
+          phone: item.phoneNum,
+          
+          // 파트 한글 -> 영문 변환 (UI 필터링 호환용)
+          part: convertPartToEnglish(item.part),
+          
+          // 결과 텍스트 -> Boolean 변환
+          isDocPass: item.document === '합격',
+          isFinalPass: item.finalResult === '합격',
+          
+          // API에 없는 필드는 기본값 처리
+          docLink: '', 
+        }));
+
+        setApplicants(formattedData);
+      } catch (error) {
+        console.error("지원자 조회 실패:", error);
+        alert("데이터를 불러오는데 실패했습니다.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  // 🔤 파트명 변환 헬퍼 함수
+  const convertPartToEnglish = (koreanPart) => {
+    switch (koreanPart) {
+      case '디자인': return 'Design';
+      case '프론트엔드': return 'Frontend';
+      case '백엔드': return 'Backend';
+      default: return 'Frontend'; 
+    }
   };
 
-  // 탭 필터링
+  const handleDocToggle = async (id) => {
+    const target = applicants.find(app => app.id === id);
+    if (!target) return;
+
+    const newCheckedState = !target.isDocPass; 
+
+    try {
+      await updateDocumentPass(id, newCheckedState);
+      
+      setApplicants(prev => prev.map(app => 
+        app.id === id ? { ...app, isDocPass: newCheckedState } : app
+      ));
+
+      console.log(`학생(ID:${id}) 서류 합격 상태 변경: ${newCheckedState}`);
+
+    } catch (error) {
+      console.error("서류 합격 상태 변경 실패:", error);
+      alert("상태 변경에 실패했습니다. 다시 시도해주세요.");
+    }
+  };
+
   const filteredApplicants = applicants.filter(item => {
     if (currentTab === 'all') return true;
     if (currentTab === 'plan_design') return item.part === 'PM' || item.part === 'Design';
@@ -44,26 +99,29 @@ const AdminDashboardPage = () => {
             </p>
           </div>
 
-          {/* 버튼 클릭 시 새 페이지로 이동 */}
           <button 
             onClick={() => navigate('/admin/final')}
             className="px-6 py-3 rounded-full title-16-bold bg-orange-01 text-white hover:bg-orange-01-hover transition-all"
           >
-            서류 합격자 관리로 이동 &gt;
+            합격자 관리로 이동 &gt;
           </button>
         </div>
 
         <TabFilter currentTab={currentTab} onTabChange={setCurrentTab} />
 
-        {/* type="doc"을 전달해서 서류 체크박스만 나오게 함 */}
-        <ApplicantList 
-          applicants={filteredApplicants} 
-          onToggle={handleDocToggle} 
-          type="doc" 
-        />
+        {loading ? (
+          <div className="w-full py-20 text-center text-white">로딩중...</div>
+        ) : (
+          <ApplicantList 
+            applicants={filteredApplicants} 
+            onToggle={handleDocToggle} 
+            type="doc" 
+          />
+        )}
         
       </main>
     </div>
   );
 };
+
 export default AdminDashboardPage;

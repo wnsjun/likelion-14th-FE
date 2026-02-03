@@ -1,6 +1,6 @@
 import ApplicantItem from './ApplicantItem';
 
-const ApplicantList = ({ applicants, onToggle, onUpdate, type }) => {
+const ApplicantList = ({ applicants, onToggle, onUpdate, onSave, type }) => {
   const isEmpty = !applicants || applicants.length === 0;
 
   return (
@@ -43,6 +43,7 @@ const ApplicantList = ({ applicants, onToggle, onUpdate, type }) => {
               applicant={item} 
               onToggle={onToggle}
               onUpdate={onUpdate}
+              onSave={onSave}
               type={type}
             />
           ))}

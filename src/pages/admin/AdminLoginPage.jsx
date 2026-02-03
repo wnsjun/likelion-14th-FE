@@ -8,9 +8,12 @@ const AdminLoginPage = () => {
   const [pw, setPw] = useState('');
   const navigate = useNavigate();
 
-  const handleLogin = async () => {
-    
-    // 유효성 검사
+  const handleLogin = async (e) => {
+    // 1. 새로고침 막기
+    if (e && e.preventDefault) {
+      e.preventDefault();
+    }
+
     if (!id || !pw) {
       alert("아이디와 비밀번호를 입력해주세요.");
       return;
@@ -18,13 +21,24 @@ const AdminLoginPage = () => {
 
     try {
       const response = await loginAdmin(id, pw);
+      
       if (response.status === 200) {
-        localStorage.setItem('adminToken', 'true');
+        console.log("로그인 성공! (브라우저가 쿠키를 저장했습니다)");
+        
+        localStorage.setItem('adminToken', 'admin-logged-in'); 
+
         alert("운영진 로그인 성공!");
-        navigate('/admin/dashboard');
+        navigate('/admin/dashboard', { replace: true });
       }
     } catch (error) {
-      alert("로그인 실패! 아이디나 비밀번호를 다시 확인해주세요.");
+      console.error("로그인 에러:", error);
+      
+      // 에러 처리 (401: 비번틀림, 403: 보안문제 등)
+      if (error.response && error.response.status === 401) {
+         alert("로그인 실패: 아이디나 비밀번호를 확인해주세요.");
+      } else {
+         alert("로그인 중 오류가 발생했습니다.");
+      }
     }
   };
 
