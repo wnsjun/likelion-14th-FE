@@ -9,16 +9,17 @@ import FailResult from './FailResult';
 import bgCircle from '../../assets/apply/bg-circle.svg'; 
 
 const ApplyCheckPage = () => {
-  // 🗓️ [설정] 날짜 상수 정의 (월은 0부터 시작: 2 = 3월)
-  
-  // 1. 서류 합격 발표일: 3월 1일 오전 10시
-  const DOCUMENT_RELEASE_DATE = new Date(2026, 2, 1, 10, 0, 0);
+  // 🗓️ [설정] 날짜 상수 정의 (한국 시간 KST +09:00 기준 고정)
+  // 문자열 형식을 사용할 때는 월을 1부터 씁니다. (03 = 3월)
 
-  // 2. 조회 차단 시작일 (면접 종료 시점): 3월 5일 오후 10시
-  const BLOCK_START_DATE = new Date(2026, 2, 5, 22, 0, 0);
+  // 1. 서류 합격 발표일: 2026년 3월 1일 오전 10시 (KST)
+  const DOCUMENT_RELEASE_DATE = new Date("2026-03-01T10:00:00+09:00");
 
-  // 3. 최종 합격 발표일 (조회 차단 해제): 3월 7일 오전 10시
-  const FINAL_RELEASE_DATE = new Date(2026, 2, 7, 10, 0, 0); 
+  // 2. 조회 차단 시작일 (면접 종료 시점): 2026년 3월 5일 오후 10시 (KST)
+  const BLOCK_START_DATE = new Date("2026-03-05T22:00:00+09:00");
+
+  // 3. 최종 합격 발표일 (조회 차단 해제): 2026년 3월 7일 오전 10시 (KST)
+  const FINAL_RELEASE_DATE = new Date("2026-03-07T10:00:00+09:00");
 
   // 상태 관리
   const [step, setStep] = useState('input');
