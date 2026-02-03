@@ -13,8 +13,11 @@ const ApplyCheckPage = () => {
   
   // 1. 서류 합격 발표일: 3월 1일 오전 10시
   const DOCUMENT_RELEASE_DATE = new Date(2026, 2, 1, 10, 0, 0);
-  
-  // 2. 최종 합격 발표일: 3월 7일 오후 10시
+
+  // 2. 조회 차단 시작일 (면접 종료 시점): 3월 5일 오후 10시
+  const BLOCK_START_DATE = new Date(2026, 2, 5, 22, 0, 0);
+
+  // 3. 최종 합격 발표일 (조회 차단 해제): 3월 7일 오전 10시
   const FINAL_RELEASE_DATE = new Date(2026, 2, 7, 10, 0, 0); 
 
   // 상태 관리
@@ -35,14 +38,22 @@ const ApplyCheckPage = () => {
       return;
     }
 
-    // 현재 시간이 서류 발표일 이전인지 확인
     const now = new Date();
+
+    // 2. [기간 체크 1] 서류 발표 이전인지 확인
     if (now < DOCUMENT_RELEASE_DATE) {
       alert("아직 합격자 조회 기간이 아닙니다.\n\n서류 결과 발표: 3월 1일 오전 10시");
       return;
     }
 
-    // 2. 로딩 시작
+    // 3. [기간 체크 2] 집계 기간(조회 차단 기간)인지 확인 (3/5 22:00 ~ 3/7 10:00)
+    // 피드백 반영: 면접이 끝난 후 최종 발표 전까지는 조회를 막습니다.
+    if (now >= BLOCK_START_DATE && now < FINAL_RELEASE_DATE) {
+      alert("현재 최종 합격자 선발 및 집계 기간입니다.\n잠시만 기다려주세요!\n\n최종 결과 발표: 3월 7일 오전 10시");
+      return;
+    }
+
+    // 4. 로딩 시작
     setStep('loading');
     setIsError(false);
 
@@ -50,22 +61,26 @@ const ApplyCheckPage = () => {
       const data = await getApplicantResult(name, num);
       setApplicantName(data.studentName);
 
-      const isFinalPeriod = now >= FINAL_RELEASE_DATE;
+      // 현재 시간이 최종 발표일 이후인지 확인
+      const isFinalReleased = now >= FINAL_RELEASE_DATE;
       
-      if (isFinalPeriod) {
-        // [기간 2] 최종 발표 기간 (3월 5일 18시 이후)
+      if (isFinalReleased) {
+        // [기간 C] 최종 발표 기간 (3월 7일 10시 이후)
+        // 이때만 finalResult 데이터를 확인합니다.
         
         if (data.finalResult === '합격') {
           setTimeout(() => setStep('final_pass'), 1000);
         } else if (data.finalResult === '보류') {
           setTimeout(() => setStep('final_pending'), 1000);
         } else {
+          // 최종 불합격
           setFailType('final');
           setTimeout(() => setStep('fail'), 1000);
         }
 
       } else {
-        // [기간 1] 서류 발표 기간 (3월 1일 10시 ~ 3월 5일 18시 전)
+        // [기간 A] 서류 발표 기간 (3월 1일 10시 ~ 3월 5일 22시 전)
+        // 이 기간에는 API에 finalResult가 있더라도 절대 열어보지 않고 무시합니다.
         
         if (data.document === '합격') {
           setPassInfo({
@@ -75,6 +90,7 @@ const ApplyCheckPage = () => {
           });
           setTimeout(() => setStep('pass'), 1000);
         } else {
+          // 서류 불합격
           setFailType('doc');
           setTimeout(() => setStep('fail'), 1000);
         }
@@ -84,6 +100,7 @@ const ApplyCheckPage = () => {
       console.error(error);
       setIsError(true);
       setStep('input');
+      // 404 등 에러 처리
       alert("일치하는 지원자 정보가 없거나, 아직 결과가 나오지 않았습니다.");
     }
   };
