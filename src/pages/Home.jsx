@@ -56,7 +56,7 @@ const Home = () => {
 
           <div className="flex flex-col sm:flex-row gap-[20px] justify-center items-center mb-[80px]">
             <SeeMore text="모집 안내 사항 바로가기" navi={'/recruiting'} />
-            <SeeMore text="지난 기수 프로젝트 바로가기" />
+            <SeeMore text="지난 기수 프로젝트 바로가기" navi={'/archive'} />
           </div>
         </div>
       </section>
