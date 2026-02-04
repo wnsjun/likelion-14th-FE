@@ -43,3 +43,4 @@ const Footer = ({ home = false }) => {
 };
 
 export default Footer;
+  

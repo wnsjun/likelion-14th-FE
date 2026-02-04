@@ -180,7 +180,7 @@
   /* 4. lg 구간 (1440px 이상) */
   @media (min-width: 1440px) {
     .responsive-layout {
-      max-width: 1140px; /* 콘텐츠 폭 고정 */
+      max-width: 1200px; /* 콘텐츠 폭 고정 */
       padding-left: 0;
       padding-right: 0;
       /* 자동으로 양옆 150px 이상의 마진이 생깁니다 */
