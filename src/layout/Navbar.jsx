@@ -23,7 +23,7 @@ const Navbar = () => {
 
     return (
       <div
-        onClick={() => navigate(path)}
+        onClick={() => { navigate(path); window.scrollTo(0, 0); }}
         className="relative mx-0 px-[24px] py-[16px] cursor-pointer group flex items-center justify-center"
       >
         {/* 1. 배경 그라데이션: 현재 페이지(isActive)면 opacity-100, 아니면 호버 시에만 나타남 */}
@@ -50,7 +50,7 @@ const Navbar = () => {
   return (
     <div className="responsive-layout flex items-center justify-between my-[8px] py-[8px]">
       <div
-        onClick={() => navigate('/')}
+        onClick={() => { navigate('/'); window.scrollTo(0, 0); }}
         className=" py-[16px] cursor-pointer navbar_title z-[60] transition-colors duration-300 hover:text-gray-02"
       >
         LIKELION HONGIK
