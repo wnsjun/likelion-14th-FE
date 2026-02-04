@@ -8,12 +8,12 @@ const Footer = ({ home = false }) => {
           - responsive-layout의 너비를 유지하면서 컨텐츠가 넘치면 스크롤 발생
           - scrollbar-hide를 통해 시각적으로 깔끔하게 유지
       */}
-      <div className="responsive-layout overflow-x-auto scrollbar-hide">
+      <div className="responsive-layout overflow-hidden">
         {/* ✅ 3. 실제 컨텐츠 래퍼: 
             - min-w-max를 통해 내부 컨텐츠(Manager 등)가 찌그러지지 않고 본래 너비를 유지하게 함
             - lg(데스크탑)에서는 다시 일반적인 flex 흐름으로 복구
         */}
-        <div className="flex flex-col lg:flex-row gap-[64px] lg:gap-[120px] min-w-max lg:min-w-0 lg:w-full">
+        <div className="flex flex-col lg:flex-row gap-[64px] lg:gap-[120px] lg:min-w-0 lg:w-full">
           {/* 연락처 섹션: shrink-0으로 너비 보존 */}
           <div className="flex flex-col gap-[64px] shrink-0">
             <div className="flex flex-col gap-[32px]">

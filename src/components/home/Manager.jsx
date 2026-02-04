@@ -103,7 +103,7 @@ const Manager = () => {
               </div>
 
               {/* 멤버 리스트: min-w-max를 추가하여 3명인 파트가 찌그러지지 않게 합니다. */}
-              <div className="flex flex-row gap-[32px] min-w-max">
+              <div className="flex flex-row gap-[12px] lg:gap-[32px] lg:min-w-max">
                 {MANAGER_DATA.filter((m) => m.part === part).map((member) => (
                   <MemberCard key={member.id} member={member} />
                 ))}
