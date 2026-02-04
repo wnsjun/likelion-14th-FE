@@ -12,6 +12,7 @@ import hackathon_b4 from '../assets/archive/hackathon/b4.png';
 import hackathon_b5 from '../assets/archive/hackathon/b5.png';
 import hackathon_b6 from '../assets/archive/hackathon/b6.png';
 
+import hackathon_c0 from '../assets/archive/hackathon/c0.png';
 import hackathon_c1 from '../assets/archive/hackathon/c1.png';
 import hackathon_c2 from '../assets/archive/hackathon/c2.png';
 import hackathon_c3 from '../assets/archive/hackathon/c3.png';
@@ -30,6 +31,7 @@ import hackathon_d4 from '../assets/archive/hackathon/d4.jpg';
 import hackathon_d5 from '../assets/archive/hackathon/d5.jpg';
 import hackathon_d6 from '../assets/archive/hackathon/d6.jpg';
 
+import hackathon_e0 from '../assets/archive/hackathon/e0.png';
 import hackathon_e1 from '../assets/archive/hackathon/e1.png';
 import hackathon_e2 from '../assets/archive/hackathon/e2.png';
 import hackathon_e3 from '../assets/archive/hackathon/e3.png';
@@ -55,6 +57,7 @@ import demoday_a6 from '../assets/archive/demoday/a6.png';
 import demoday_a7 from '../assets/archive/demoday/a7.png';
 import demoday_a8 from '../assets/archive/demoday/a8.png';
 
+import demoday_b0 from '../assets/archive/demoday/b0.png';
 import demoday_b1 from '../assets/archive/demoday/b1.png';
 import demoday_b2 from '../assets/archive/demoday/b2.png';
 import demoday_b3 from '../assets/archive/demoday/b3.png';
@@ -74,6 +77,7 @@ import demoday_c6 from '../assets/archive/demoday/c6.png';
 import demoday_c7 from '../assets/archive/demoday/c7.png';
 import demoday_c8 from '../assets/archive/demoday/c8.png';
 
+import demoday_d0 from '../assets/archive/demoday/d0.png';
 import demoday_d1 from '../assets/archive/demoday/d1.png';
 import demoday_d2 from '../assets/archive/demoday/d2.png';
 import demoday_d3 from '../assets/archive/demoday/d3.png';
@@ -189,7 +193,7 @@ export const projects = [
     backend: '이광휘 장민지',
   },
   {
-    image: hackathon_c1,
+    image: hackathon_c0,
     images: [
       hackathon_c1,
       hackathon_c2,
@@ -229,7 +233,7 @@ export const projects = [
     backend: '박서영 박태원',
   },
   {
-    image: hackathon_e1,
+    image: hackathon_e0,
     images: [
       hackathon_e1,
       hackathon_e2,
@@ -286,7 +290,7 @@ export const projects = [
     backend: '윤지민 이광휘',
   },
   {
-    image: demoday_b1,
+    image: demoday_b0,
     images: [
       demoday_b1,
       demoday_b2,
@@ -301,7 +305,7 @@ export const projects = [
     category: '데모데이',
     title: '땅땅땅',
     subtitle:
-      'AI 판사의 판결을 중심으로, 사용자가 변호사나 배심원이 되어 논리로 대결하는 재판 구조 기반의 밸런스 게임 플랫폼',
+      'AI 판사의 판결을 중심으로, 사용자가 변호사나 배심원이 되어 논리로 대결하는 재판 구조 기반 밸런스 게임 플랫폼',
     designer: '강채원',
     frontend: '박채아 이승찬 이정인',
     backend: '최우혁 황신애',
@@ -326,7 +330,7 @@ export const projects = [
     backend: '박서영 윤서현 장민지',
   },
   {
-    image: demoday_d1,
+    image: demoday_d0,
     images: [
       demoday_d1,
       demoday_d2,

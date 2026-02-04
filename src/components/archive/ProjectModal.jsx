@@ -12,10 +12,7 @@ const ProjectModal = ({ isOpen, onClose, project }) => {
     const images = project?.images || [];
     const totalImages = images.length;
 
-    const IMAGE_WIDTH = 467;
-    const IMAGE_HEIGHT = 267;
     const IMAGE_GAP = 1;
-    const totalWidth = (IMAGE_WIDTH + IMAGE_GAP) * totalImages - IMAGE_GAP;
 
     // 슬라이더 위치 계산
     const handleSliderInteraction = useCallback((clientX) => {
@@ -26,12 +23,13 @@ const ProjectModal = ({ isOpen, onClose, project }) => {
         const percentage = Math.max(0, Math.min(1, x / rect.width));
 
         const containerWidth = imagesContainerRef.current.offsetWidth;
-        const maxScroll = Math.max(totalWidth - containerWidth, 0);
+        const scrollWidth = imagesContainerRef.current.scrollWidth;
+        const maxScroll = Math.max(scrollWidth - containerWidth, 0);
         const newScroll = percentage * maxScroll;
 
         setScrollPosition(newScroll);
         imagesContainerRef.current.scrollLeft = newScroll;
-    }, [totalWidth]);
+    }, []);
 
     // 스크롤 이벤트 핸들러
     const handleScroll = () => {
@@ -95,7 +93,8 @@ const ProjectModal = ({ isOpen, onClose, project }) => {
 
     // 손잡이 위치 계산 (%)
     const containerWidth = imagesContainerRef.current?.offsetWidth || 800;
-    const maxScroll = Math.max(totalWidth - containerWidth, 1);
+    const scrollWidth = imagesContainerRef.current?.scrollWidth || 800;
+    const maxScroll = Math.max(scrollWidth - containerWidth, 1);
     const handlePosition = (scrollPosition / maxScroll) * 100;
 
     return (
@@ -207,8 +206,7 @@ const ProjectModal = ({ isOpen, onClose, project }) => {
                                 key={index}
                                 src={src}
                                 alt={`${project.title} - ${index + 1}`}
-                                className="flex-shrink-0 object-cover h-full"
-                                style={{ aspectRatio: '467/267' }}
+                                className="flex-shrink-0 h-full w-auto"
                                 draggable={false}
                             />
                         ))}

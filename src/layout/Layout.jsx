@@ -22,7 +22,7 @@ const Layout = () => {
       subtitle: '지난 활동',
       title: 'Archive',
       description:
-        '2025년 멋쟁이 사자처럼 13기에서 진행한\n프로젝트와 활동을 소개합니다.',
+        '2025년 멋쟁이사자처럼 13기에서 진행한\n프로젝트와 활동을 소개합니다.',
     },
     '/recruiting': {
       subtitle: '모집 안내',
