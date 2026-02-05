@@ -80,7 +80,7 @@ const ActivityGallery = () => {
         return () => window.removeEventListener('resize', calculateSizes);
     }, []);
 
-    const spacerWidth = 500;
+    const spacerWidth = 100;
     const totalWidth = (imageSize.width + gap) * totalImages + spacerWidth;
 
     // 슬라이더 위치 계산
@@ -168,7 +168,7 @@ const ActivityGallery = () => {
                     />
                 ))}
                 {/* 마지막 사진이 다 보이도록 여백 추가 */}
-                <div className="flex-shrink-0 w-[200px]" />
+                <div className="flex-shrink-0 w-[100px]" />
             </div>
 
             {/* 슬라이더 바 */}

@@ -13,7 +13,7 @@ const Track = ({ type = 'home' }) => {
           {type === 'home' && (
             <div
               className="group flex flex-row gap-[12px] body-18-semibold transition-colors text-gray-02 hover:text-gray-03 justify-center items-center cursor-pointer"
-              onClick={() => nav('/recruiting')}
+              onClick={() => { nav('/recruiting'); window.scrollTo(0, 0); }}
             >
               모집 정보 확인하기{' '}
               <svg
