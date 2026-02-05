@@ -22,9 +22,7 @@ const AdminLoginPage = () => {
     try {
       const response = await loginAdmin(id, pw);
       
-      if (response.status === 200) {
-        console.log("로그인 성공! (브라우저가 쿠키를 저장했습니다)");
-        
+      if (response.status === 200) {       
         localStorage.setItem('adminToken', 'admin-logged-in'); 
 
         alert("운영진 로그인 성공!");
