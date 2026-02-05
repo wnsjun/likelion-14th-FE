@@ -27,6 +27,7 @@ const ActivityGallery = () => {
     const [isDragging, setIsDragging] = useState(false);
     const [imageSize, setImageSize] = useState({ width: 500, height: 360 });
     const [sliderWidth, setSliderWidth] = useState('100%');
+    const [spacerWidth, setSpacerWidth] = useState(250);
     const sliderRef = useRef(null);
     const containerRef = useRef(null);
     const wrapperRef = useRef(null);
@@ -73,6 +74,15 @@ const ActivityGallery = () => {
                 contentWidth = screenWidth - 48;
             }
             setSliderWidth(`${contentWidth}px`);
+
+            // 마지막 사진 뒤 여백 (모바일은 줄임)
+            if (screenWidth >= 1024) {
+                setSpacerWidth(250);
+            } else if (screenWidth >= 600) {
+                setSpacerWidth(150);
+            } else {
+                setSpacerWidth(80);
+            }
         };
 
         calculateSizes();
@@ -80,7 +90,6 @@ const ActivityGallery = () => {
         return () => window.removeEventListener('resize', calculateSizes);
     }, []);
 
-    const spacerWidth = 100;
     const totalWidth = (imageSize.width + gap) * totalImages + spacerWidth;
 
     // 슬라이더 위치 계산
@@ -168,7 +177,7 @@ const ActivityGallery = () => {
                     />
                 ))}
                 {/* 마지막 사진이 다 보이도록 여백 추가 */}
-                <div className="flex-shrink-0 w-[100px]" />
+                <div className="flex-shrink-0" style={{ width: `${spacerWidth}px` }} />
             </div>
 
             {/* 슬라이더 바 */}
