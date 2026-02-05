@@ -41,7 +41,7 @@ const PartCard = ({ track }) => {
           <div className="title-18-bold md:title-24-semibold lg:title-20-bold text-[#080300] break-keep">
             {track.title}
           </div>
-          <div className="body-14-medium md:body-16-medium text-gray-07 whitespace-pre-line break-keep leading-snug">
+          <div className="font-regular text-[14px] md:font-medium md:text-[16px] text-gray-07 whitespace-pre-line break-keep leading-snug">
             {track.description}
           </div>
         </div>
