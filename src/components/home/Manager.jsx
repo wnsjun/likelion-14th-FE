@@ -16,11 +16,11 @@ const MemberCard = ({ member }) => (
         <div className="title-20-semibold text-gray-01 ">{member.name}</div>
       </div>
       <div className="flex flex-col gap-[4px]">
-        <div className="body-16-regular text-gray-04 leading-tight">
+        <div className="sm:text-[16px] sm:font-regular text-[14px] text-gray-04 leading-tight">
           {member.major}
         </div>
         {member.phone && (
-          <div className="body-16-regular text-gray-04 leading-tight">
+          <div className="sm:text-[16px] sm:font-regular text-[14px] font-regular text-gray-04 leading-tight">
             {member.phone}
           </div>
         )}
@@ -103,7 +103,7 @@ const Manager = () => {
               </div>
 
               {/* 멤버 리스트: min-w-max를 추가하여 3명인 파트가 찌그러지지 않게 합니다. */}
-              <div className="flex flex-row gap-[12px] lg:gap-[32px] lg:min-w-max">
+              <div className="flex flex-row gap-[12px] md:gap-[32px] lg:min-w-max">
                 {MANAGER_DATA.filter((m) => m.part === part).map((member) => (
                   <MemberCard key={member.id} member={member} />
                 ))}
