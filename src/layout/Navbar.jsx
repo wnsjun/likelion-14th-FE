@@ -79,7 +79,7 @@ const Navbar = () => {
         src={menu}
       />
       <div
-        className={`fixed inset-0 bg-bg-dark/85 z-50 transition-transform duration-300 min-[1024px]:hidden
+        className={`fixed inset-0 bg-bg-dark/85 z-50 min-[1024px]:hidden
           ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
       >
         <div className="flex flex-col items-center justify-center h-full space-y-2">
