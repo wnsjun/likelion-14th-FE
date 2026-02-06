@@ -50,9 +50,13 @@ export default function EventCard({
           px-4 py-3 text-center flex items-center justify-center rounded-lg transition-all duration-200
           ${
             // '일'이 포함된 날짜면 활성 색상, 아니면(8월, 추후공지 등) 흐린 색상
-            hasDayString ? 'text-gray-01 hover:shadow-lg' : 'text-gray-04'
+            hasDayString
+              ? 'text-gray-02 '
+              : 'text-gray-04 opacity-60'
           }
-          ${showBorder ? 'border-2 border-gray-01' : ''}
+          ${
+            showBorder ? 'border border-px border-gray-02' : ''
+          }
         `}
       >
         <div

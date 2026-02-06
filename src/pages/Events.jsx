@@ -42,11 +42,11 @@ export default function Events() {
             정기 세션 #7
           </span>, date: '5월 14일', isDisabled: false },
         { title: <span className="break-keep inline-block leading-tight">
-            기획/디자인 발표
-          </span>, date: '5월 21일', isDisabled: false },
+            아이디어톤
+          </span>, date: '추후공지', isDisabled: false },
         { title: (<span className="break-keep inline-block leading-tight">
             해커톤 팀빌딩
-          </span>), date: '5월 28일', isDisabled: false },
+          </span>), date: '5월 21~28일', isDisabled: false },
       ],
     },
     {
@@ -78,7 +78,7 @@ export default function Events() {
     {
       month: '8월',
       events: [
-        { title: '해커톤', date: '8월', isDisabled: false },
+        { title: '해커톤', date: '추후공지', isDisabled: false },
       ],
     },
   ];
@@ -102,7 +102,7 @@ export default function Events() {
     {
       month: '11월',
       events: [
-        { title: '데모데이', date: '11월', isDisabled: false },
+        { title: '데모데이', date: '추후공지', isDisabled: false },
       ],
     },
   ];

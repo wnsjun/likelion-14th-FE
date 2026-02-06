@@ -17,7 +17,10 @@ const CheckForm = ({ name, setName, num, setNum, onCheck, isError, setIsError })
     }
   };
 
-  const clearName = () => setName('');
+  const clearName = () => {
+    setName('');
+    if (isError) setIsError(false);
+  }
   
   const clearCode = () => {
     setNum('');
@@ -43,16 +46,18 @@ const CheckForm = ({ name, setName, num, setNum, onCheck, isError, setIsError })
               value={name || ''} 
               onChange={(e) => setName(e.target.value)}
               placeholder="성함을 입력해주세요"
-              className={`flex w-full h-[54px] p-[16px] items-center gap-[10px] rounded-[8px] bg-gray-01 text-black placeholder:text-gray-04 outline-none focus:ring-2 focus:ring-orange-04
-                ${name?.length > 0 ? 'pr-[44px]' : ''}`}
+              className={`flex w-full h-[54px] p-[16px] items-center gap-[10px] rounded-[8px] bg-gray-01 text-black placeholder:text-gray-04 outline-none focus:ring-[1px] focus:ring-yellow-main 
+                ${isError ? 'ring-[1px] ring-[#DE2E2E] pr-[44px]' : ''}
+                ${!isError && num?.length > 0 ? 'pr-[44px]' : ''}
+              `} 
             />
-            {/* 이름 지우기 버튼 */}
-            {name?.length > 0 && (
+            {/* 아이콘 로직 */}
+            {(isError || num?.length > 0) && (
               <img 
-                src={closeIcon} 
-                alt="clear" 
+                src={isError ? errorIcon : closeIcon} 
+                alt="clear"
                 onClick={clearName}
-                className="absolute right-[16px] top-1/2 -translate-y-1/2 w-[20px] h-[20px] cursor-pointer hover:opacity-80" 
+                className="absolute right-[16px] top-1/2 -translate-y-1/2 w-4 h-4 cursor-pointer hover:opacity-80" 
               />
             )}
           </div>
@@ -67,8 +72,8 @@ const CheckForm = ({ name, setName, num, setNum, onCheck, isError, setIsError })
               value={num || ''} 
               onChange={handleCodeChange}
               placeholder="본인이 설정한 식별코드를 입력해주세요"
-              className={`flex w-full h-[54px] p-[16px] items-center gap-[10px] rounded-[8px] bg-gray-01 text-black placeholder:text-gray-04 outline-none focus:ring-2 focus:ring-orange-04 
-                ${isError ? 'ring-2 ring-[#DE2E2E] pr-[44px]' : ''}
+              className={`flex w-full h-[54px] p-[16px] items-center gap-[10px] rounded-[8px] bg-gray-01 text-black placeholder:text-gray-04 outline-none focus:ring-[1px] focus:ring-yellow-main 
+                ${isError ? 'ring-[1px] ring-[#DE2E2E] pr-[44px]' : ''}
                 ${!isError && num?.length > 0 ? 'pr-[44px]' : ''}
               `} 
             />
@@ -79,28 +84,29 @@ const CheckForm = ({ name, setName, num, setNum, onCheck, isError, setIsError })
                 src={isError ? errorIcon : closeIcon} 
                 alt="clear"
                 onClick={clearCode}
-                className="absolute right-[16px] top-1/2 -translate-y-1/2 w-[20px] h-[20px] cursor-pointer hover:opacity-80" 
+                className="absolute right-[16px] top-1/2 -translate-y-1/2 w-4 h-4 cursor-pointer hover:opacity-80" 
               />
             )}
           </div>
-          
-          {/* 에러 메시지 */}
-          {isError && (
-            <label className='detail-12-semibold text-[#DE2E2E] mt-1 ml-1'>
-              코드를 다시 확인해주세요
-            </label>
-          )}
-          
-          <label className="detail-12-regular text-gray-04 ml-1 mt-1 leading-relaxed">
-            *식별코드가 기억나지 않으신다면, 지원 시 사용한 Gmail로 전송된<br/>'구글 폼 응답 사본'에서 확인하실 수 있습니다.
+
+          <label className="detail-12-regular text-gray-02 ml-1 leading-relaxed">
+            *식별코드가 기억나지 않으신다면, 지원 시 사용한 Gmail로 전송된<br/>
+            <span className="detail-12-semibold text-gray-01">'구글 폼 응답 사본'</span>에서 확인하실 수 있습니다.
           </label>
         </div>
+
+        {/* 에러 메시지 */}
+          {isError && (
+            <label className='detail-12-semibold text-[#DE2E2E] mt-[30px] ml-1'>
+              이름 및 코드를 다시 확인해주세요
+            </label>
+          )}
 
         {/* 조회 버튼 */}
         <button 
           onClick={handleSubmit}
           disabled={!isActive}
-          className={`mt-4 w-[370px] h-[54px] p-[16px] rounded-[8px] text-white font-bold transition-all duration-200
+          className={`mt-2 w-[370px] h-[54px] p-[16px] rounded-[8px] text-white font-bold transition-all duration-200
             ${isActive 
               ? 'bg-orange-01 border border-orange-04 hover:bg-orange-01-hover cursor-pointer'
               : 'bg-gray-04 cursor-not-allowed border-none'

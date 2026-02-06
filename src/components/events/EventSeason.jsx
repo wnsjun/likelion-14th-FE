@@ -23,9 +23,8 @@ export default function EventSeason({
 
       {/* 2. 중앙: 세로 줄 */}
       <div className="flex flex-col items-center relative">
-        {/* w-0.5 lg:w-1 : 모바일에서는 선 두께를 얇게(0.5) 처리 */}
-        <div
-          className="w-0.5 lg:w-1 flex-1 -mt-2"
+        <div 
+          className="w-[0.5px] lg:w-px flex-1 -mt-2"
           style={{ backgroundColor: seasonColor }}
         ></div>
 

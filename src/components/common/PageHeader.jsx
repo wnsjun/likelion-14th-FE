@@ -14,7 +14,7 @@ const PageHeader = ({ title, subtitle, description }) => {
 
         {/* 설명글 영역 */}
         <div className="w-full lg:pb-2">
-          <p className="body-12-semibold md:body-16-semibold text-gray-05 leading-relaxed whitespace-pre-wrap">
+          <p className="body-16-semibold md:body-16-semibold text-gray-05 leading-relaxed whitespace-pre-wrap">
             {description}
           </p>
         </div>
