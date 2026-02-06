@@ -1,7 +1,7 @@
 import { Outlet, useLocation } from 'react-router-dom';
 import PageHeader from '../components/common/PageHeader';
 import Footer from '../layout/Footer';
-import Navbar from './NavBar';
+import Navbar from './Navbar';
 
 const Layout = () => {
   const location = useLocation();

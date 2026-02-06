@@ -6,7 +6,7 @@ import KeyComp from '../components/home/KeyComp';
 import Track from '../components/home/Track';
 import SeeMore from '../components/home/SeeMore';
 import Footer from '../layout/Footer';
-import Navbar from '../layout/NavBar';
+import Navbar from '../layout/Navbar';
 
 const Home = () => {
   return (
