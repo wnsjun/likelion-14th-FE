@@ -3,7 +3,7 @@ import FAQItem from '../components/faq/FAQItem';
 const FAQ = () => {
     return (
         <div>
-            <h1 className="mt-[80px] text-[48px] sm:text-[64px] font-bold leading-[120%] text-center text-white">
+            <h1 className="mt-[40px] text-[48px] sm:text-[64px] font-bold leading-[120%] text-center text-white">
                 자주 묻는 질문
             </h1>
             <p className="mt-[24px] body-16-semibold text-center text-gray-02" style={{ letterSpacing: '-0.003px' }}>
