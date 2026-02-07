@@ -29,7 +29,7 @@ const MemberCard = ({ member }) => (
     {/* md일때 */}
     <div className="hidden md:block lg:hidden flex flex-row justify-center items-center ">
       <div className="flex flex-row gap-x-[16px]">
-        <div className="flex w-[100px] h-[100px] rounded-full bg-[#D9D9D9] overflow-hidden shrink-0">
+        <div className="flex w-[100px] h-[100px] rounded-full bg-[#D9D9D9] overflow-hidden shrink-0 justify-center items-center">
           <img src={member.imgSrc} alt="" className=" object-cover" />
         </div>
         <div className="flex flex-col justify-center items-start">
@@ -52,7 +52,7 @@ const MemberCard = ({ member }) => (
     {/* --- 3. Large 전용 (이미지 아래에 텍스트, 중앙 정렬) --- */}
     {/* ✅ 핵심: flex-col과 items-center를 주어 모든 요소를 수직 중앙으로 맞춥니다. */}
     <div className="hidden lg:flex flex-col items-center gap-y-[16px] w-full">
-      <div className="w-[114px] h-[114px] rounded-full bg-[#D9D9D9] overflow-hidden shrink-0">
+      <div className="w-[100px] h-[100px] rounded-full bg-[#D9D9D9] overflow-hidden shrink-0">
         <img
           src={member.imgSrc}
           alt=""
@@ -80,38 +80,35 @@ const MemberCard = ({ member }) => (
 
 // 2. 메인 섹션 컴포넌트
 const Manager = () => {
-  // 시안처럼 행 단위로 파트를 묶어줍니다.
-  const parts = [
-    ['회장', '기획/디자인', '프론트엔드', '백엔드'], // 첫 번째 줄 (1명 + 3명)
-  ];
+  const parts = ['회장', '기획/디자인', '프론트엔드', '백엔드'];
 
   return (
-    <div className="flex flex-col bg-bg-secondary">
+    <div className="flex flex-col bg-bg-secondary w-full">
       <div className="title-20-bold text-white mb-[30px]">운영진</div>
 
-      {/* 행(Row) 단위로 렌더링 */}
-      {parts.map((parts, idx) => (
-        <div
-          key={idx}
-          className="grid grid-cols-1 lg:grid-flow-col lg:grid-rows-2 gap-y-[64px] lg:gap-x-[112px]"
-        >
-          {parts.map((part) => (
-            <div key={part} className="flex flex-col gap-[24px]">
-              {/* 파트 이름 표기 */}
-              <div className="body-16-semibold lg:bg-gray-02 bg-transparent border-[1.5px] border-gray-02 text-gray-02 rounded-full w-fit lg:text-gray-07 px-[20px] py-[8px]">
-                {part}
-              </div>
+      {/* 전체 스크롤 컨테이너: sm 이상에선 스크롤을 죽임 */}
+      <div className="w-full overflow-x-auto sm:overflow-x-visible scrollbar-hide pb-4">
+        {/* 내부 판: 350px 미만에서만 너비를 유지하고, sm부턴 화면에 맞춤 */}
+        <div className="w-max sm:w-full">
+          {/* 과거의 그 그리드 설정 그대로 복구 */}
+          <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-flow-col lg:grid-rows-2 gap-y-[64px] lg:gap-x-[112px]">
+            {parts.map((part) => (
+              <div key={part} className="flex flex-col gap-[24px]">
+                <div className="body-16-semibold lg:bg-gray-02 bg-transparent border-[1.5px] border-gray-02 text-gray-02 rounded-full w-fit lg:text-gray-07 px-[20px] py-[8px]">
+                  {part}
+                </div>
 
-              {/* 멤버 리스트: min-w-max를 추가하여 3명인 파트가 찌그러지지 않게 합니다. */}
-              <div className="flex flex-row gap-[12px] md:gap-[32px] lg:min-w-max">
-                {MANAGER_DATA.filter((m) => m.part === part).map((member) => (
-                  <MemberCard key={member.id} member={member} />
-                ))}
+                {/* 멤버 리스트: 데스크탑에서 잘리지 않도록 min-w-max는 lg에서만 유지 */}
+                <div className="flex flex-row gap-[12px] md:gap-[32px] lg:min-w-max">
+                  {MANAGER_DATA.filter((m) => m.part === part).map((member) => (
+                    <MemberCard key={member.id} member={member} />
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      ))}
+      </div>
     </div>
   );
 };
