@@ -2,9 +2,9 @@ const PartCard = ({ track }) => {
   return (
     <div
       className={`
-        group p-[24px] md:p-[32px] rounded-[16px]
+        group p-[24px] sm:p-[32px] rounded-[16px]
         w-[211px] sm:w-full lg:w-full shrink-0
-        h-full lg:h-[368px] flex flex-col
+        sm:h-[158px] md:h-[224px] lg:h-[368px] flex flex-col
         ${track.bgColor}
       `}
     >
@@ -15,17 +15,17 @@ const PartCard = ({ track }) => {
             <img
               alt="트랙 아이콘"
               src={track.imgSrc}
-              className="w-[54px] md:w-[64px] lg:w-[160px] aspect-square object-contain shrink-0"
+              className="w-[54px] md:w-[160px] aspect-square object-contain shrink-0"
             />
           </div>
         </div>
 
         {/* 2. 텍스트 영역: h-full 대신 flex-1을 써야 이미지를 밀어내지 않습니다 */}
-        <div className="flex flex-col flex-1 justify-between w-full">
+        <div className="flex flex-col flex-1 lg:w-full lg:justify-between sm:h-full sm:justify-between w-full">
           <div className="text-[18px] font-bold md:text-[24px] lg:text-[20px] text-[#080300] break-keep">
             {track.title}
           </div>
-          <div className="font-regular text-[14px] md:text-[16px] text-gray-07 whitespace-pre-line break-keep leading-snug mt-4">
+          <div className="font-regular text-[14px] sm:text-[16px] sm:w-[370px] lg:w-[302px]  sm:font-medium text-gray-07 whitespace-pre-line break-keep leading-snug mt-4">
             {track.description}
           </div>
         </div>
