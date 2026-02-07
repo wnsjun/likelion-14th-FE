@@ -15,13 +15,13 @@ const PartCard = ({ track }) => {
             <img
               alt="트랙 아이콘"
               src={track.imgSrc}
-              className="w-[54px] md:w-[160px] aspect-square object-contain shrink-0"
+              className="w-[54px] aspect-square md:w-[160px] md:h-[160px] object-contain shrink-0"
             />
           </div>
         </div>
 
         {/* 2. 텍스트 영역: h-full 대신 flex-1을 써야 이미지를 밀어내지 않습니다 */}
-        <div className="flex flex-col flex-1 lg:w-full lg:justify-between sm:h-full sm:justify-between w-full">
+        <div className="flex flex-col md:h-[160px] lg:h-[120px] flex-1 lg:w-full lg:justify-between sm:h-full sm:justify-between w-full">
           <div className="text-[18px] font-bold md:text-[24px] lg:text-[20px] text-[#080300] break-keep">
             {track.title}
           </div>
