@@ -254,6 +254,9 @@
     @apply text-[14px] font-semibold leading-[150%];
   }
 
+  .body-12-semibold{
+    @apply text-[12px] font-semibold leading-[150%]
+  }
   /* Detail Styles */
   .detail-12-regular {
     @apply text-[12px] font-regular leading-[150%];

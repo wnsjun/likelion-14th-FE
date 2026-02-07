@@ -7,6 +7,7 @@ import FinalPassResult from './FinalPassResult';
 import FinalPendingResult from './FinalPendingResult';
 import FailResult from './FailResult';
 import bgCircle from '../../assets/apply/bg-circle.svg'; 
+import CircleRec from '../../assets/apply/CircleRec.png';
 
 const ApplyCheckPage = () => {
   // 🗓️ [설정] 날짜 상수 정의 (한국 시간 KST +09:00 기준 고정)
@@ -102,7 +103,6 @@ const ApplyCheckPage = () => {
       setIsError(true);
       setStep('input');
       // 404 등 에러 처리
-      alert("일치하는 지원자 정보가 없거나, 아직 결과가 나오지 않았습니다.");
     }
   };
 
@@ -114,15 +114,20 @@ const ApplyCheckPage = () => {
 
   return (
     <div className="relative w-full min-h-screen bg-bg-dark overflow-x-hidden">
-      <div className="fixed top-0 left-0 w-full z-50">
-        <Navbar />
-      </div>
 
       {step === 'input' && (
-        <img src={bgCircle} alt="" className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0 w-[100vw] aspect-[1440/1024] max-w-none pointer-events-none opacity-50" />
+        <div className="fixed inset-0 w-full h-full z-0 pointer-events-none flex items-center justify-center">
+          
+          <img 
+            src={CircleRec} 
+            alt="" 
+            className="min-w-full min-h-full object-cover -translate-y-[28%]" 
+          />
+          
+        </div>
       )}
 
-      <div className={`relative z-10 w-full min-h-screen flex flex-col ${(step === 'input' || step === 'loading') ? 'justify-center items-center' : 'pt-[120px] px-6 lg:px-[120px]'}`}>
+      <div className={`relative z-10 w-full min-h-screen flex flex-col ${(step === 'input' || step === 'loading') ? 'justify-center items-center' : 'pt-[120px] '}`}>
         
         {step === 'input' && (
           <CheckForm 

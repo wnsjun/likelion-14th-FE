@@ -1,11 +1,12 @@
 import { useNavigate } from 'react-router-dom';
+import HomeIcon from '../../assets/apply/icon-home.svg';
 
 const FinalPassResult = ({ name }) => {
   const navigate = useNavigate();
   const firstName = name && name.length >= 3 ? name.slice(1) : name;
 
   return (
-    <div className="w-full flex flex-col items-start px-8">
+    <div className="w-full flex flex-col items-start ">
       
       {/* 타이틀 */}
       <div className="mb-[48px] pt-8">
@@ -34,7 +35,7 @@ const FinalPassResult = ({ name }) => {
       </div>
 
       {/* OT 및 향후 안내 카드 */}
-      <div className="w-full max-w-[340px] bg-bg-secondary rounded-[8px] p-6 mb-[60px] border border-gray-07">
+      <div className="w-full max-w-[340px] bg-bg-secondary rounded-[8px] p-6 mb-[56px] sm:mb-51 border border-gray-07">
         <h3 className="body-18-semibold text-orange-04 mb-3">
           📢 향후 일정 안내
         </h3>
@@ -47,25 +48,34 @@ const FinalPassResult = ({ name }) => {
         </p>
       </div>
 
-      {/* 하단 (문의처 & 홈 버튼) */}
-      <div className="w-full flex justify-between items-end">
-        <div className="flex flex-col gap-2">
+      {/* 하단 (추가 문의 & 홈 버튼) */}
+      <div className="w-full flex justify-between items-end mb-10">
+        <div className="flex flex-col gap-2 pb-14 sm:pb-0">
           <span className="body-16-semibold text-gray-02 ml-1">추가 문의</span>
-          <div className="flex gap-2">
-            <div className="flex px-[24px] py-[8px] justify-center items-center gap-[10px] rounded-[100px]  bg-gray-07 text-gray-01 body-14-semibold">
+          <div className="flex flex-col sm:flex-row gap-2">
+            <div className="w-fit  flex px-[24px] py-[8px] justify-center items-center gap-[10px] rounded-[100px]  bg-gray-07 text-gray-01 body-12-semibold sm:body-14-semibold">
               010-3120-2936
             </div>
-            <div className="flex px-[24px] py-[8px] justify-center items-center gap-[10px] rounded-[100px]  bg-gray-07 text-gray-01 body-14-semibold">
-              hongik.likelion@gmail.com
-            </div>
+           <div className="w-fit flex px-[24px] py-[8px] justify-center items-center gap-[10px] rounded-[100px]  bg-gray-07 text-gray-01 body-12-semibold sm:body-14-semibold">
+            hongik.likelion@gmail.com
+           </div>
           </div>
         </div>
-
+      
         <button
           onClick={() => navigate('/')}
           className="flex justify-center items-center gap-[10px] px-[24px] py-[16px] rounded-[100px] border border-orange-04 bg-orange-01 text-white font-semibold hover:bg-orange-01-hover cursor-pointer transition-all"
         >
-          홈으로 이동
+          <img 
+           src={HomeIcon} 
+           alt="Home" 
+           className="lg:hidden w-6 h-6" 
+          />
+      
+        {/* 2. 1024px 이상(lg 이상)에서만 보임 -> 기본은 숨김(hidden), lg부터 보임(block) */}
+         <span className="hidden lg:block">
+           홈으로 이동
+         </span> 
         </button>
       </div>
     </div>

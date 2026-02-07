@@ -27,20 +27,28 @@ const CheckForm = ({ name, setName, num, setNum, onCheck, isError, setIsError })
     if (isError) setIsError(false);
   };
 
+  const commonWidthClass = "w-[323px] md:w-[370px]";
+
   return (
     <div className="w-full flex flex-col gap-6 px-4 items-center">
       {/* 안내 문구 */}
-      <div className="text-center mb-20">
-        <h2 className="title-48-semibold text-white mb-2">홍익대 멋사 14기<br/>지원결과 조회</h2>
+      <div className="text-center mb-11 sm:mb-20">
+        <h2 className="
+            text-[32px] font-semibold leading-tight  {/* 모바일 기본 (32px) */}
+            sm:text-[48px] font-bold                 {/* PC (md) 이상에서 48px로 덮어쓰기 */}
+            text-white mb-2
+        ">
+          홍익대 멋사 14기<br/>지원결과 조회
+        </h2>
       </div>
 
       {/* 입력 필드 영역 */}
       <div className="flex flex-col items-center gap-2 bp-14">
         
         {/* 1. 이름 입력 */}
-        <div className="flex flex-col gap-1">
+        <div className={`flex flex-col gap-1 ${commonWidthClass}`}>
           <label className="detail-12-regular text-gray-04 ml-1">Name</label>
-          <div className="relative w-[370px]">
+          <div className="relative w-full items-center">
             <input 
               type="text" 
               value={name || ''} 
@@ -64,9 +72,9 @@ const CheckForm = ({ name, setName, num, setNum, onCheck, isError, setIsError })
         </div>
 
         {/* 2. 식별코드 입력 (변수명 num 사용) */}
-        <div className="flex flex-col gap-1 mt-2">
+        <div className={`flex flex-col gap-1 mt-2 ${commonWidthClass}`}>
           <label className="detail-12-regular text-gray-04 ml-1">Code</label>
-          <div className="relative w-[370px]">
+          <div className="relative w-full items-center">
             <input 
               type="text" 
               value={num || ''} 
@@ -103,18 +111,20 @@ const CheckForm = ({ name, setName, num, setNum, onCheck, isError, setIsError })
           )}
 
         {/* 조회 버튼 */}
-        <button 
-          onClick={handleSubmit}
-          disabled={!isActive}
-          className={`mt-2 w-[370px] h-[54px] p-[16px] rounded-[8px] text-white font-bold transition-all duration-200
-            ${isActive 
-              ? 'bg-orange-01 border border-orange-04 hover:bg-orange-01-hover cursor-pointer'
-              : 'bg-gray-04 cursor-not-allowed border-none'
-            }
-          `}
-        >
-          지원 결과 조회하기
-        </button>
+        <div className='{`${commonWidthClass}`}'>
+          <button 
+            onClick={handleSubmit}
+            disabled={!isActive}
+            className={`mt-2 h-[54px] p-[16px] rounded-[8px] text-white font-bold transition-all duration-200 ${commonWidthClass}
+              ${isActive 
+                ? 'bg-orange-01 border border-orange-04 hover:bg-orange-01-hover cursor-pointer'
+                : 'bg-gray-04 cursor-not-allowed border-none'
+              }
+            `}
+          >
+            지원 결과 조회하기
+          </button>
+        </div>
       </div>      
     </div>
   );
