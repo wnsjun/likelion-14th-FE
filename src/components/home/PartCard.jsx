@@ -2,9 +2,9 @@ const PartCard = ({ track }) => {
   return (
     <div
       className={`
-        group p-[24px] md:p-[32px] rounded-[16px] transition-all duration-200 
+        group p-[24px] md:p-[32px] rounded-[16px]
         w-[211px] sm:w-full lg:w-full shrink-0
-        h-full flex flex-col
+        h-full lg:h-[368px] flex flex-col
         ${track.bgColor}
       `}
     >
