@@ -3,7 +3,7 @@ import FAQItem from '../components/faq/FAQItem';
 const FAQ = () => {
     return (
         <div>
-            <h1 className="mt-[80px] text-[48px] sm:text-[64px] font-bold leading-[120%] text-center text-[#F3EAE5]">
+            <h1 className="mt-[80px] text-[48px] sm:text-[64px] font-bold leading-[120%] text-center text-white">
                 자주 묻는 질문
             </h1>
             <p className="mt-[24px] body-16-semibold text-center text-gray-02" style={{ letterSpacing: '-0.003px' }}>
@@ -47,7 +47,7 @@ const FAQ = () => {
                 />
                 <FAQItem
                     question="Q. 기획에 더 관심이 있는 사람은 하기 어려울까요?"
-                    answer="A. 한 파트에서 진행하는 만큼, 어느정도 디자인에 대한 열정을 필요로 하고 있습니다. 만약 디자인 툴이 처음이시더라도, 세션을 통해 차근차근 배우며 성공적으로 수료한 아기사자들이 정말 많으니 안심하고 지원해 주세요!"
+                    answer="A. 한 파트에서 진행하는 만큼, 어느정도 디자인에 대한 열정을 필요로 하고 있습니다. 만약 디자인 툴이 처음이더라도, 세션을 통해 차근차근 배우며 성공적으로 수료한 아기사자들이 정말 많으니 안심하고 지원해 주세요!"
                 />
             </div>
 

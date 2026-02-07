@@ -12,7 +12,6 @@ import hackathon_b4 from '../assets/archive/hackathon/b4.png';
 import hackathon_b5 from '../assets/archive/hackathon/b5.png';
 import hackathon_b6 from '../assets/archive/hackathon/b6.png';
 
-import hackathon_c0 from '../assets/archive/hackathon/c0.png';
 import hackathon_c1 from '../assets/archive/hackathon/c1.png';
 import hackathon_c2 from '../assets/archive/hackathon/c2.png';
 import hackathon_c3 from '../assets/archive/hackathon/c3.png';
@@ -21,8 +20,6 @@ import hackathon_c5 from '../assets/archive/hackathon/c5.png';
 import hackathon_c6 from '../assets/archive/hackathon/c6.png';
 import hackathon_c7 from '../assets/archive/hackathon/c7.png';
 import hackathon_c8 from '../assets/archive/hackathon/c8.png';
-import hackathon_c9 from '../assets/archive/hackathon/c9.png';
-import hackathon_c10 from '../assets/archive/hackathon/c10.png';
 
 import hackathon_d1 from '../assets/archive/hackathon/d1.jpg';
 import hackathon_d2 from '../assets/archive/hackathon/d2.jpg';
@@ -31,13 +28,14 @@ import hackathon_d4 from '../assets/archive/hackathon/d4.jpg';
 import hackathon_d5 from '../assets/archive/hackathon/d5.jpg';
 import hackathon_d6 from '../assets/archive/hackathon/d6.jpg';
 
-import hackathon_e0 from '../assets/archive/hackathon/e0.png';
 import hackathon_e1 from '../assets/archive/hackathon/e1.png';
 import hackathon_e2 from '../assets/archive/hackathon/e2.png';
 import hackathon_e3 from '../assets/archive/hackathon/e3.png';
 import hackathon_e4 from '../assets/archive/hackathon/e4.png';
 import hackathon_e5 from '../assets/archive/hackathon/e5.png';
 import hackathon_e6 from '../assets/archive/hackathon/e6.png';
+import hackathon_e7 from '../assets/archive/hackathon/e7.png';
+import hackathon_e8 from '../assets/archive/hackathon/e8.png';
 
 import hackathon_f1 from '../assets/archive/hackathon/f1.png';
 import hackathon_f2 from '../assets/archive/hackathon/f2.png';
@@ -57,7 +55,6 @@ import demoday_a6 from '../assets/archive/demoday/a6.png';
 import demoday_a7 from '../assets/archive/demoday/a7.png';
 import demoday_a8 from '../assets/archive/demoday/a8.png';
 
-import demoday_b0 from '../assets/archive/demoday/b0.png';
 import demoday_b1 from '../assets/archive/demoday/b1.png';
 import demoday_b2 from '../assets/archive/demoday/b2.png';
 import demoday_b3 from '../assets/archive/demoday/b3.png';
@@ -67,6 +64,12 @@ import demoday_b6 from '../assets/archive/demoday/b6.png';
 import demoday_b7 from '../assets/archive/demoday/b7.png';
 import demoday_b8 from '../assets/archive/demoday/b8.png';
 import demoday_b9 from '../assets/archive/demoday/b9.png';
+import demoday_b10 from '../assets/archive/demoday/b10.png';
+import demoday_b11 from '../assets/archive/demoday/b11.png';
+import demoday_b12 from '../assets/archive/demoday/b12.png';
+import demoday_b13 from '../assets/archive/demoday/b13.png';
+import demoday_b14 from '../assets/archive/demoday/b14.png';
+import demoday_b15 from '../assets/archive/demoday/b15.png';
 
 import demoday_c1 from '../assets/archive/demoday/c1.png';
 import demoday_c2 from '../assets/archive/demoday/c2.png';
@@ -77,7 +80,6 @@ import demoday_c6 from '../assets/archive/demoday/c6.png';
 import demoday_c7 from '../assets/archive/demoday/c7.png';
 import demoday_c8 from '../assets/archive/demoday/c8.png';
 
-import demoday_d0 from '../assets/archive/demoday/d0.png';
 import demoday_d1 from '../assets/archive/demoday/d1.png';
 import demoday_d2 from '../assets/archive/demoday/d2.png';
 import demoday_d3 from '../assets/archive/demoday/d3.png';
@@ -90,6 +92,12 @@ import demoday_d9 from '../assets/archive/demoday/d9.png';
 import demoday_d10 from '../assets/archive/demoday/d10.png';
 import demoday_d11 from '../assets/archive/demoday/d11.png';
 import demoday_d12 from '../assets/archive/demoday/d12.png';
+import demoday_d13 from '../assets/archive/demoday/d13.png';
+import demoday_d14 from '../assets/archive/demoday/d14.png';
+import demoday_d15 from '../assets/archive/demoday/d15.png';
+import demoday_d16 from '../assets/archive/demoday/d16.png';
+import demoday_d17 from '../assets/archive/demoday/d17.png';
+import demoday_d18 from '../assets/archive/demoday/d18.png';
 
 import demoday_e1 from '../assets/archive/demoday/e1.jpg';
 import demoday_e2 from '../assets/archive/demoday/e2.jpg';
@@ -193,7 +201,7 @@ export const projects = [
     backend: '이광휘 장민지',
   },
   {
-    image: hackathon_c0,
+    image: hackathon_c1,
     images: [
       hackathon_c1,
       hackathon_c2,
@@ -203,8 +211,6 @@ export const projects = [
       hackathon_c6,
       hackathon_c7,
       hackathon_c8,
-      hackathon_c9,
-      hackathon_c10,
     ],
     category: '해커톤',
     title: '아끼미',
@@ -233,7 +239,7 @@ export const projects = [
     backend: '박서영 박태원',
   },
   {
-    image: hackathon_e0,
+    image: hackathon_e1,
     images: [
       hackathon_e1,
       hackathon_e2,
@@ -241,6 +247,8 @@ export const projects = [
       hackathon_e4,
       hackathon_e5,
       hackathon_e6,
+      hackathon_e7,
+      hackathon_e8,
     ],
     category: '해커톤',
     title: 'MAPOOP',
@@ -290,7 +298,7 @@ export const projects = [
     backend: '윤지민 이광휘',
   },
   {
-    image: demoday_b0,
+    image: demoday_b1,
     images: [
       demoday_b1,
       demoday_b2,
@@ -301,6 +309,12 @@ export const projects = [
       demoday_b7,
       demoday_b8,
       demoday_b9,
+      demoday_b10,
+      demoday_b11,
+      demoday_b12,
+      demoday_b13,
+      demoday_b14,
+      demoday_b15,
     ],
     category: '데모데이',
     title: '땅땅땅',
@@ -330,7 +344,7 @@ export const projects = [
     backend: '박서영 윤서현 장민지',
   },
   {
-    image: demoday_d0,
+    image: demoday_d1,
     images: [
       demoday_d1,
       demoday_d2,
@@ -344,6 +358,12 @@ export const projects = [
       demoday_d10,
       demoday_d11,
       demoday_d12,
+      demoday_d13,
+      demoday_d14,
+      demoday_d15,
+      demoday_d16,
+      demoday_d17,
+      demoday_d18,
     ],
     category: '데모데이',
     title: '또박이',

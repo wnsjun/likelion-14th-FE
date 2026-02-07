@@ -1,4 +1,5 @@
 import arrow from '../../assets/archive/arrow.svg';
+import arrowOn from '../../assets/archive/arrowon.svg';
 
 const PaginationButton = ({ direction, onClick, disabled }) => {
     return (
@@ -11,19 +12,19 @@ const PaginationButton = ({ direction, onClick, disabled }) => {
                 rounded-[100px]
                 bg-[#2D2D2D]
                 body-18-regular text-white
-                ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
+                ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer hover:bg-[#1C1C1C]'}
             `}
         >
             {direction === 'prev' && (
                 <>
-                    <img src={arrow} alt="이전" className="w-[9px] h-[17px]" />
+                    <img src={disabled ? arrow : arrowOn} alt="이전" className="w-[9px] h-[17px] rotate-180" />
                     <span>이전</span>
                 </>
             )}
             {direction === 'next' && (
                 <>
                     <span>다음</span>
-                    <img src={arrow} alt="다음" className="w-[9px] h-[17px] rotate-180" />
+                    <img src={disabled ? arrow : arrowOn} alt="다음" className="w-[9px] h-[17px]" />
                 </>
             )}
         </button>
