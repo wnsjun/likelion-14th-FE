@@ -14,7 +14,7 @@ const ApplyCheckPage = () => {
   // 문자열 형식을 사용할 때는 월을 1부터 씁니다. (03 = 3월)
 
   // 1. 서류 합격 발표일: 2026년 3월 1일 오전 10시 (KST)
-  const DOCUMENT_RELEASE_DATE = new Date("2025-03-01T10:00:00+09:00");
+  const DOCUMENT_RELEASE_DATE = new Date("2026-03-01T10:00:00+09:00");
 
   // 2. 조회 차단 시작일 (면접 종료 시점): 2026년 3월 5일 오후 10시 (KST)
   const BLOCK_START_DATE = new Date("2026-03-05T22:00:00+09:00");
