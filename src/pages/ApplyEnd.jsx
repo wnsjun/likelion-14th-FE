@@ -21,13 +21,13 @@ const ApplyEnd = () => {
       </h1>
       
       <p className="body-18-regular text-gray-02 text-center mb-16 leading-relaxed">
-        멋진 여정을 향한 여러분의 관심에 진심으로 감사드립니다<br/>아쉽게도 14기 모집은 마감되었습니다. 향후 진행될 15기모집에서 여러분의 도전을 기다리겠습니다
+        멋진 여정을 향한 여러분의 관심에 진심으로 감사드립니다.<br/>아쉽게도 14기 모집은 마감되었습니다. 향후 진행될 15기 모집에서 여러분의 도전을 기다리겠습니다.
       </p>
 
       {/* 3. 홈으로 이동 버튼 */}
       <button
         onClick={() => navigate('/')}
-        className="flex justify-center items-center gap-[10px] px-[24px] py-[16px] rounded-[100px] border border-[#BA4E23] bg-[#6C2D14] text-white font-semibold hover:opacity-90 transition-all"
+        className="flex justify-center items-center gap-[10px] px-[24px] py-[16px] rounded-[100px] border border-[#BA4E23] bg-[#6C2D14] text-white font-semibold hover:opacity-90 transition-all cursor-pointer"
         >
         홈으로 이동
       </button>

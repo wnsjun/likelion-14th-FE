@@ -10,6 +10,12 @@ const CheckForm = ({ name, setName, num, setNum, onCheck, isError, setIsError })
     onCheck(); // 부모가 이미 데이터를 갖고 있으므로 인자 없이 호출
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter' && isActive) {
+      handleSubmit();
+    }
+  };
+
   const handleCodeChange = (e) => {
     setNum(e.target.value); // 부모의 setNum 사용
     if (isError) {
@@ -32,11 +38,11 @@ const CheckForm = ({ name, setName, num, setNum, onCheck, isError, setIsError })
   return (
     <div className="w-full flex flex-col gap-6 px-4 items-center">
       {/* 안내 문구 */}
-      <div className="text-center mb-11 sm:mb-20">
+      <div className="text-center mb-10">
         <h2 className="
             text-[32px] font-semibold leading-tight  {/* 모바일 기본 (32px) */}
             sm:text-[48px] font-bold                 {/* PC (md) 이상에서 48px로 덮어쓰기 */}
-            text-white mb-2
+            text-white mt-10
         ">
           홍익대 멋사 14기<br/>지원결과 조회
         </h2>
@@ -49,10 +55,11 @@ const CheckForm = ({ name, setName, num, setNum, onCheck, isError, setIsError })
         <div className={`flex flex-col gap-1 ${commonWidthClass}`}>
           <label className="detail-12-regular text-gray-04 ml-1">Name</label>
           <div className="relative w-full items-center">
-            <input 
-              type="text" 
-              value={name || ''} 
+            <input
+              type="text"
+              value={name || ''}
               onChange={(e) => setName(e.target.value)}
+              onKeyDown={handleKeyDown}
               placeholder="성함을 입력해주세요"
               className={`flex w-full h-[54px] p-[16px] items-center gap-[10px] rounded-[8px] bg-gray-01 text-black placeholder:text-gray-04 outline-none focus:ring-[1px] focus:ring-yellow-main 
                 ${isError ? 'ring-[1px] ring-[#DE2E2E] pr-[44px]' : ''}
@@ -75,10 +82,11 @@ const CheckForm = ({ name, setName, num, setNum, onCheck, isError, setIsError })
         <div className={`flex flex-col gap-1 mt-2 ${commonWidthClass}`}>
           <label className="detail-12-regular text-gray-04 ml-1">Code</label>
           <div className="relative w-full items-center">
-            <input 
-              type="text" 
-              value={num || ''} 
+            <input
+              type="text"
+              value={num || ''}
               onChange={handleCodeChange}
+              onKeyDown={handleKeyDown}
               placeholder="본인이 설정한 식별코드를 입력해주세요"
               className={`flex w-full h-[54px] p-[16px] items-center gap-[10px] rounded-[8px] bg-gray-01 text-black placeholder:text-gray-04 outline-none focus:ring-[1px] focus:ring-yellow-main 
                 ${isError ? 'ring-[1px] ring-[#DE2E2E] pr-[44px]' : ''}

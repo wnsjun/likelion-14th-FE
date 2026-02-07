@@ -9,7 +9,7 @@ const PassResult = ({ name, info }) => {
     <div className="w-full flex flex-col items-start ">
       
       {/* Part 1. 상단 타이틀 */}
-      <div className="mb-[48px] pt-32">
+      <div className="mb-[48px] pt-20">
         <div className="flex items-end mb-2">
           <span className="title-32-semibold text-white mr-1 pr-2">
             {name}
@@ -25,12 +25,12 @@ const PassResult = ({ name, info }) => {
 
       {/* Part 2. 합격 메시지 */}
       <div className="body-16-regular text-gray-03 mb-8 leading-relaxed whitespace-pre-wrap">
-        먼저 귀한 시간 할애하여 멋쟁이 사자처럼 14기 선발에 지원해주셔서 매우 감사드립니다.<br/><br/>
-        홍익대 멋사 14기 1차 서류 합격을 진심으로 축하드리며<br/>
+        먼저 귀한 시간을 할애하여 멋쟁이사자처럼 14기 선발에 지원해 주셔서 진심으로 감사드립니다.<br/><br/>
+        홍익대학교 멋쟁이사자처럼 14기 1차 서류 합격을 진심으로 축하드리며<br/>
         <span >{firstName}</span> 님의 빛나는 가능성을 직접 마주할 시간을 설레는 마음으로 기다리겠습니다.<br/>
         <br/>
         원활한 진행을 위해 
-        <span className='body-16-semibold text-[#DABE5A]'> 면접 날짜, 시간, 그리고 장소를 꼼꼼하게 확인 및 숙지</span>
+        <span className='body-16-semibold text-[#DABE5A]'> 면접 날짜, 시간, 그리고 장소를 꼼꼼하게 확인 및 숙지 </span>
          부탁드리며<br/>
         소중한 시간 내어 주시는 만큼 저희도 최선을 다해 준비하겠습니다.
       </div>
@@ -84,7 +84,7 @@ const PassResult = ({ name, info }) => {
         </div>
 
         <button
-          onClick={() => navigate('/')}
+          onClick={() => { navigate('/'); window.scrollTo(0, 0); }}
           className="flex justify-center items-center gap-[10px] px-[24px] py-[16px] rounded-[100px] border border-orange-04 bg-orange-01 text-white font-semibold hover:bg-orange-01-hover cursor-pointer transition-all"
         >
           <img 
