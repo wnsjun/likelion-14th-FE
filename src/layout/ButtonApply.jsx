@@ -11,7 +11,7 @@ const ButtonApply = ({ type, className, onClick }) => {
 
   // 🗓️ 기간 설정 (월은 0부터 시작: 2월 = 1)
     /* 여기 주석 풀면 지원 기간에만 적용됩니다. 지원기간 전후로 버튼 테스트할 때 사용하세요.*/
-  const startDate = new Date(currentYear, 1, 16, 0, 0, 0); // 2월 16일 00:00:00
+  const startDate = new Date(currentYear, 1, 12, 0, 0, 0); // 2월 12일 00:00:00
   const endDate = new Date(currentYear, 1, 26, 23, 59, 59); // 2월 26일 23:59:59
 
   // 테스트용: 1월 1일 ~ 2월 14일 까지로 설정 -> 실제 배포 시 위 주석 해제 필요 및 아래 주석 처리
@@ -33,7 +33,7 @@ const ButtonApply = ({ type, className, onClick }) => {
   const handleApply = () => {
     // 1. 기간 전
     if (isBefore) {
-      alert('아직 지원 기간이 아닙니다.\n지원 기간: 2월 16일 ~ 2월 26일');
+      alert('아직 지원 기간이 아닙니다.\n지원 기간: 2월 12일 ~ 2월 26일');
       return;
     }
 
