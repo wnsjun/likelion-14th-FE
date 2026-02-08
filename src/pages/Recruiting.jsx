@@ -20,7 +20,7 @@ const Recruiting = () => {
       >
         <div className="title-20-bold text-white">서류 제출 기간</div>
         <div className="body-18-regular text-gray-02">
-          2026년 2월 16일 - 2월 26일 23:59
+          2026년 2월 12일 - 2월 26일 23:59
         </div>
       </div>
 
@@ -32,7 +32,7 @@ const Recruiting = () => {
             2. min-[1440px]:grid-cols-4 : 1440px 이상일 때 4개씩 1줄 (1x4)
         */}
         <div className="grid grid-cols-2 min-[1440px]:grid-cols-4 gap-[20px]">
-          <EventCard title="서류 접수" date="2월 16일 - 26일" />
+          <EventCard title="서류 접수" date="2월 12일 - 26일" />
           <EventCard title="서류 합격 발표" date="3월 1일" />
           <EventCard
             title="면접"
