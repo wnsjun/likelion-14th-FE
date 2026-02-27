@@ -10,7 +10,7 @@ const ButtonApplyFE = ({ type, className, onClick }) => {
 
 
   // 🗓️ 기간 설정
-  const startDate = new Date("2026-02-28T00:00:00+09:00"); // 2월 28일 00:00:00
+  const startDate = new Date("2026-02-28T10:00:00+09:00"); // 2월 28일 10:00:00
   const endDate = new Date("2026-03-02T22:00:00+09:00"); // 3월 2일 22:00:00
 
   // 상태 판별
