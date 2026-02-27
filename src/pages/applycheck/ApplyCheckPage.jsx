@@ -13,8 +13,8 @@ const ApplyCheckPage = () => {
   // 🗓️ [설정] 날짜 상수 정의 (한국 시간 KST +09:00 기준 고정)
   // 문자열 형식을 사용할 때는 월을 1부터 씁니다. (03 = 3월)
 
-  // 1. 서류 합격 발표일: 2026년 3월 1일 오전 10시 (KST)
-  const DOCUMENT_RELEASE_DATE = new Date("2026-03-01T10:00:00+09:00");
+  // 1. 서류 합격 발표일: 2026년 2월 28일 오전 10시 (KST)
+  const DOCUMENT_RELEASE_DATE = new Date("2026-02-28T10:00:00+09:00");
 
   // 2. 조회 차단 시작일 (면접 종료 시점): 2026년 3월 5일 오후 10시 (KST)
   const BLOCK_START_DATE = new Date("2026-03-05T22:00:00+09:00");
@@ -44,7 +44,7 @@ const ApplyCheckPage = () => {
 
     // 2. [기간 체크 1] 서류 발표 이전인지 확인
     if (now < DOCUMENT_RELEASE_DATE) {
-      alert("아직 합격자 조회 기간이 아닙니다.\n\n서류 결과 발표: 3월 1일 오전 10시");
+      alert("아직 합격자 조회 기간이 아닙니다.\n\n서류 결과 발표: 2월 28일 오전 10시");
       return;
     }
 
