@@ -26,7 +26,7 @@ const ButtonApplyFE = ({ type, className, onClick }) => {
   const handleApply = () => {
     // 1. 기간 전
     if (isBefore) {
-      alert('아직 지원 기간이 아닙니다.\n지원 기간: 2월 28일 ~ 3월 2일');
+      alert('아직 지원 기간이 아닙니다.\n지원 기간: 2월 28일 10:00 ~ 3월 2일 22:00');
       return;
     }
 
