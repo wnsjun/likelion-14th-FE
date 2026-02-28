@@ -39,14 +39,9 @@ const ButtonApply = ({ type, className, onClick }) => {
 
     // 2. 기간 후 (마감)
     if (isAfter) {
-      // Long 타입 버튼은 결과 확인 페이지로 이동
-      if (type === 'long_title' || type === 'long_footer') {
-        navigate('/apply-check');
-        window.scrollTo(0, 0); // 페이지 상단으로 이동
-      } else {
-        navigate('/apply-end');
-        window.scrollTo(0, 0); // 페이지 상단으로 이동
-      }
+      // 모든 타입 버튼 결과 확인 페이지로 이동
+      navigate('/apply-check');
+      window.scrollTo(0, 0); // 페이지 상단으로 이동
       return;
     }
 
@@ -57,12 +52,11 @@ const ButtonApply = ({ type, className, onClick }) => {
 
   // 🎨 스타일 로직 설정
 
-  // 회색 스타일 (기간 전 이거나, 기간 후이면서 Short 타입일 때)
-  const isGrayStyle = isBefore || (isAfter && type === 'short');
+  // 회색 스타일 (기간 전일 때만)
+  const isGrayStyle = isBefore;
 
-  // 오렌지 스타일 (기간 중 이거나, 기간 후이면서 Long 타입일 때)
-  const isOrangeStyle =
-    isOngoing || (isAfter && (type === 'long_title' || type === 'long_footer'));
+  // 오렌지 스타일 (기간 중이거나 기간 후일 때)
+  const isOrangeStyle = isOngoing || isAfter;
 
   const baseStyle =
     'flex justify-center items-center whitespace-nowrap rounded-full border-[1.5px] transition-colors duration-300';
@@ -83,7 +77,7 @@ const ButtonApply = ({ type, className, onClick }) => {
   const getButtonText = () => {
     if (type === 'short') {
       if (isBefore) return '오픈예정';
-      if (isAfter) return '지원마감';
+      if (isAfter) return '결과 확인';
       return '지원하기';
     }
     // Long types

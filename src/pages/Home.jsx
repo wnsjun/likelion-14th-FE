@@ -66,7 +66,7 @@ const Home = () => {
         </div>
       </section>
       {/* 5. 하단 지원 버튼 및 푸터 */}
-      <div className="responsive-layout flex justify-center gap-6 items-center md:mb-[126px] mb-[64px]">
+      <div className="responsive-layout hidden md:flex justify-center gap-6 items-center md:mb-[126px] mb-[64px]">
         <ButtonApply type="long_footer" />
         <ButtonApplyFE type="long_footer" />
       </div>
