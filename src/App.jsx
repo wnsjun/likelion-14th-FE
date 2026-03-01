@@ -25,8 +25,6 @@ function App() {
           <Route path="/recruiting" element={<Recruiting />} />
           <Route path="/apply-end" element={<ApplyEnd />} />
           <Route path="/apply-check" element={<ApplyCheckPage />} />
-
-
           <Route path="/faq" element={<FAQ />} />
         </Route>
 

@@ -19,7 +19,7 @@ const FinalPassResult = ({ name }) => {
           </span>
         </div>
         <h1 className="title-32-semibold text-white">
-          최종 합격입니다 🎉
+          최종 합격입니다
         </h1>
       </div>
 
@@ -31,21 +31,10 @@ const FinalPassResult = ({ name }) => {
         되신 것을 진심으로 축하드립니다!<br/>
         <br/>
         <span className="text-white font-bold">{firstName}</span> 님과 함께 만들어갈 14기의 여정이 무척 기대됩니다.<br/>
-        앞으로 멋진 성장을 함께 이루어나가길 소망합니다.
-      </div>
-
-      {/* OT 및 향후 안내 카드 */}
-      <div className="w-full max-w-[340px] bg-bg-secondary rounded-[8px] p-6 mb-[56px] sm:mb-51 border border-gray-07">
-        <h3 className="body-18-semibold text-orange-04 mb-3">
-          📢 향후 일정 안내
-        </h3>
-        <p className="body-14-regular text-gray-02 leading-relaxed">
-          합격자 단톡방 초대 및 오리엔테이션(OT) 관련 안내는<br/>
-          지원서에 기재해주신 <span className="text-white font-medium">전화번호(문자/카톡)</span>를 통해<br/>
-          순차적으로 연락드릴 예정입니다.<br/>
-          <br/>
-          조금만 기다려주세요! 🦁
-        </p>
+        앞으로 멋진 성장을 함께 이루어나가길 소망합니다.<br/>
+        <br/>
+        “최종 합격자”는 반드시 오늘 6시까지 010-3120-2936으로 확인 여부 회신 부탁드립니다.<br/>
+        Ex. 000, 확인했습니다. (회신이 없을 시 최종 합격이 취소될 수 있습니다.)<br/>
       </div>
 
       {/* 하단 (추가 문의 & 홈 버튼) */}
