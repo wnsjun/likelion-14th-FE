@@ -18,6 +18,11 @@ const ButtonApplyFE = ({ type, className, onClick }) => {
   const isAfter = now > endDate;
   const isOngoing = !isBefore && !isAfter;
 
+  // ButtonApply가 결과 조회 역할을 하므로 기간이 지난 경우에는 버튼 자체를 렌더링하지 않도록 설정
+  if (isAfter) {
+    return null;
+  }
+
   // 🔗 구글 폼 주소
   const GOOGLE_FORM_URL =
     'https://docs.google.com/forms/d/1wU1jXZtfOoAu_ksIwLwjeKB9eFCcHRAvPl04uhejgeo/viewform';

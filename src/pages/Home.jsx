@@ -36,10 +36,10 @@ const Home = () => {
               국내 최대 규모의 IT 창업 연합 동아리
             </div>
             <div className="flex gap-[16px]">
-            <ButtonApply type="long_title" className={'hidden sm:block'} />
-            <ButtonApplyFE type="long_title" className={'hidden sm:block'} />
-            <ButtonApply type="short" className={'sm:hidden block'} />
-            <ButtonApplyFE type="short" className={'sm:hidden block'} />
+              <ButtonApply type="long_title" className={'hidden sm:block'} />
+              <ButtonApply type="short" className={'sm:hidden block'} />
+              <ButtonApplyFE type="long_title" className={'hidden sm:block'} />
+              <ButtonApplyFE type="short" className={'sm:hidden block'} />
             </div>
           </div>
 
