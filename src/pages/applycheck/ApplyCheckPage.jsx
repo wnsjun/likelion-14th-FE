@@ -19,8 +19,8 @@ const ApplyCheckPage = () => {
   // 2. 조회 차단 시작일 (면접 종료 시점): 2026년 3월 5일 오후 10시 (KST)
   const BLOCK_START_DATE = new Date("2026-03-05T22:00:00+09:00");
 
-  // 3. 최종 합격 발표일 (조회 차단 해제): 2026년 3월 7일 오전 10시 (KST)
-  const FINAL_RELEASE_DATE = new Date("2026-03-07T10:00:00+09:00");
+  // 3. 최종 합격 발표일 (조회 차단 해제): 2026년 3월 6일 오전 10시 (KST)
+  const FINAL_RELEASE_DATE = new Date("2026-03-06T10:00:00+09:00");
 
   // 상태 관리
   const [step, setStep] = useState('input');
@@ -51,7 +51,7 @@ const ApplyCheckPage = () => {
     // 3. [기간 체크 2] 집계 기간(조회 차단 기간)인지 확인 (3/5 22:00 ~ 3/7 10:00)
     // 피드백 반영: 면접이 끝난 후 최종 발표 전까지는 조회를 막습니다.
     if (now >= BLOCK_START_DATE && now < FINAL_RELEASE_DATE) {
-      alert("현재 최종 합격자 선발 및 집계 기간입니다.\n잠시만 기다려주세요!\n\n최종 결과 발표: 3월 7일 오전 10시");
+      alert("현재 최종 합격자 선발 및 집계 기간입니다.\n잠시만 기다려주세요!\n\n최종 결과 발표: 3월 6일 오전 10시");
       return;
     }
 
